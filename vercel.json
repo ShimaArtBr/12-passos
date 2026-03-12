@@ -1,4 +1,5 @@
 {
+  "cleanUrls": false,
   "headers": [
     {
       "source": "/(.*)",
@@ -9,7 +10,7 @@
       ]
     },
     {
-      "source": "/src/styles/(.*)",
+      "source": "/public/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
