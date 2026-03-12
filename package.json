@@ -1,0 +1,6 @@
+{
+  "name": "bazilar-didatico",
+  "scripts": {
+    "build": "echo ok"
+  }
+}
