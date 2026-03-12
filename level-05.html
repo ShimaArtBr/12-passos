@@ -165,87 +165,78 @@
       <span class="wxd-info-hint">Clique em um elemento para explorar suas relações</span>
     </div>
 
-    <!-- SVG do Figma com ciclos Wu Xing animado -->
-    <svg class="wxd-svg" style="width:100%;max-width:600px;display:block;margin:0 auto" id="wxd-diagram" viewBox="0 0 1266 1327" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama Wu Xing com ciclos de geração e controle">
-  
-  <!-- Ciclo de Geração (setas pretas) -->
-  <g class="wxd-gen-layer" id="gen-layer">
-    <!-- Madeira → Fogo -->
-    <path d="M650 165V160H650L650 165ZM945.857 266.265C948.586 265.844 950.456 263.289 950.035 260.56L943.161 216.088C942.739 213.359 940.185 211.489 937.456 211.911C934.727 212.333 932.856 214.887 933.278 217.616L939.388 257.146L899.858 263.256C897.129 263.678 895.258 266.232 895.68 268.961C896.102 271.691 898.656 273.561 901.385 273.139L945.857 266.265ZM649.933 160C647.172 160 644.933 162.239 644.934 165C644.934 167.762 647.172 170 649.934 170L649.934 165L649.933 160ZM650 165V170C759.27 170 860.258 205.4 942.139 265.358L945.093 261.324L948.047 257.29C864.51 196.119 761.466 160 650 160V165ZM649.934 165L649.934 170L650.001 170L650 165L650 160L649.933 160L649.934 165Z" fill="black" class="wxd-arrow wxd-gen" data-from="wood" data-to="fire"/>
-    
-    <!-- Fogo → Terra -->
-    <path d="M1121.42 821.172C1122.68 823.63 1125.69 824.604 1128.15 823.346L1168.21 802.853C1170.67 801.595 1171.64 798.583 1170.38 796.124C1169.13 793.666 1166.11 792.692 1163.65 793.95L1128.04 812.166L1109.83 776.555C1108.57 774.097 1105.56 773.123 1103.1 774.381C1100.64 775.638 1099.67 778.651 1100.92 781.109L1121.42 821.172ZM1130.9 510.407C1130.05 507.778 1127.24 506.331 1124.61 507.175C1121.98 508.02 1120.53 510.836 1121.38 513.465L1126.14 511.936L1130.9 510.407ZM1150 665H1145C1145 718.167 1136.62 769.368 1121.11 817.357L1125.87 818.895L1130.63 820.432C1146.45 771.461 1155 719.224 1155 665H1150ZM1126.14 511.936L1121.38 513.465C1136.72 561.217 1145 612.136 1145 665H1150H1155C1155 611.086 1146.55 559.135 1130.9 510.407L1126.14 511.936Z" fill="black" class="wxd-arrow wxd-gen" data-from="fire" data-to="earth"/>
-    
-    <!-- Terra → Metal -->
-    <path d="M943.218 1076.2C945.465 1074.6 945.985 1071.47 944.38 1069.23C942.775 1066.98 939.652 1066.46 937.405 1068.07L940.311 1072.13L943.218 1076.2ZM650.437 1161.48C648.5 1163.44 648.524 1166.61 650.492 1168.55L682.56 1200.12C684.528 1202.05 687.694 1202.03 689.631 1200.06C691.569 1198.09 691.544 1194.93 689.576 1192.99L661.071 1164.93L689.133 1136.42C691.07 1134.46 691.045 1131.29 689.077 1129.35C687.109 1127.42 683.944 1127.44 682.006 1129.41L650.437 1161.48ZM940.311 1072.13L937.405 1068.07C857.378 1125.23 759.617 1159.16 653.961 1159.98L654 1164.98L654.039 1169.98C761.82 1169.14 861.572 1134.53 943.218 1076.2L940.311 1072.13Z" fill="black" class="wxd-arrow wxd-gen" data-from="earth" data-to="metal"/>
-    
-    <!-- Metal → Água -->
-    <path d="M169.557 509.003C168.704 511.629 170.143 514.449 172.769 515.302C175.396 516.154 178.216 514.715 179.068 512.089L174.312 510.546L169.557 509.003ZM359.622 262.251C360.043 259.522 358.171 256.969 355.442 256.548L310.966 249.7C308.237 249.279 305.683 251.151 305.263 253.88C304.843 256.61 306.715 259.163 309.444 259.583L348.978 265.671L342.89 305.205C342.47 307.934 344.342 310.487 347.071 310.908C349.8 311.328 352.353 309.456 352.774 306.727L359.622 262.251ZM174.312 510.546L179.068 512.089C211.466 412.242 274.741 326.295 357.637 265.523L354.681 261.49L351.724 257.458C267.169 319.447 202.614 407.122 169.557 509.003L174.312 510.546Z" fill="black" class="wxd-arrow wxd-gen" data-from="metal" data-to="water"/>
-    
-    <!-- Água → Madeira -->
-    <path d="M350.358 1071.54C352.58 1073.18 355.71 1072.71 357.351 1070.48C358.991 1068.26 358.519 1065.13 356.298 1063.49L353.328 1067.51L350.358 1071.54ZM177.445 817.694C174.978 816.454 171.973 817.448 170.732 819.915L150.517 860.119C149.276 862.586 150.271 865.591 152.738 866.832C155.205 868.073 158.21 867.078 159.451 864.611L177.42 828.874L213.157 846.844C215.624 848.084 218.629 847.09 219.87 844.623C221.111 842.156 220.116 839.15 217.649 837.909L177.445 817.694ZM353.328 1067.51L356.298 1063.49C274.8 1003.32 212.423 918.758 179.946 820.591L175.199 822.161L170.452 823.732C203.59 923.899 267.229 1010.16 350.358 1071.54L353.328 1067.51Z" fill="black" class="wxd-arrow wxd-gen" data-from="water" data-to="wood"/>
-  </g>
+    <svg id="wxd-diagram" width="1266" height="1327" viewBox="0 0 1266 1327" class="wxd-svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Diagrama Wu Xing com ciclos de geração e controle">
 
-  <!-- Ciclo de Controle (setas brancas) -->
-  <g class="wxd-ctrl-layer" id="ctrl-layer" style="opacity:0;pointer-events:none">
-    <!-- Madeira → Terra -->
-    <path d="M540 986C540 988.761 542.239 991 545 991C547.761 991 550 988.761 550 986L545 986L540 986ZM548.536 336.464C546.583 334.512 543.417 334.512 541.464 336.464L509.645 368.284C507.692 370.237 507.692 373.403 509.645 375.355C511.597 377.308 514.763 377.308 516.716 375.355L545 347.071L573.284 375.355C575.237 377.308 578.403 377.308 580.355 375.355C582.308 373.403 582.308 370.237 580.355 368.284L548.536 336.464ZM545 986L550 986L550 340L545 340L540 340L540 986L545 986Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="wood" data-to="earth"/>
-    
-    <!-- Fogo → Metal -->
-    <path d="M310.455 657.87C307.829 658.723 306.391 661.544 307.245 664.17C308.098 666.796 310.919 668.234 313.545 667.38L312 662.625L310.455 657.87ZM930.838 465.27C932.091 462.81 931.113 459.799 928.652 458.545L888.557 438.115C886.097 436.862 883.086 437.84 881.832 440.301C880.578 442.761 881.557 445.772 884.017 447.025L919.658 465.185L901.498 500.825C900.244 503.286 901.222 506.297 903.683 507.55C906.143 508.804 909.154 507.826 910.408 505.365L930.838 465.27ZM312 662.625L313.545 667.38L927.928 467.755L926.382 463L924.837 458.245L310.455 657.87L312 662.625Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="fire" data-to="metal"/>
-    
-    <!-- Terra → Água -->
-    <path d="M551.592 338.162C549.969 335.927 546.842 335.432 544.608 337.055C542.374 338.678 541.879 341.805 543.502 344.039L547.547 341.1L551.592 338.162ZM926.474 868.664C929.201 869.096 931.763 867.235 932.195 864.508L939.234 820.062C939.666 817.334 937.805 814.773 935.078 814.341C932.35 813.909 929.789 815.77 929.357 818.497L923.1 858.005L883.592 851.747C880.865 851.315 878.304 853.176 877.872 855.904C877.44 858.631 879.301 861.192 882.028 861.624L926.474 868.664ZM547.547 341.1L543.502 344.039L923.211 866.664L927.256 863.725L931.301 860.786L551.592 338.162L547.547 341.1Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="earth" data-to="water"/>
-    
-    <!-- Água → Fogo -->
-    <path d="M930.168 468.701C931.791 466.467 931.296 463.34 929.062 461.717C926.828 460.094 923.701 460.589 922.078 462.823L926.123 465.762L930.168 468.701ZM541.475 989.169C541.907 991.897 544.469 993.758 547.196 993.326L591.642 986.286C594.369 985.854 596.23 983.293 595.798 980.565C595.366 977.838 592.805 975.977 590.078 976.409L550.57 982.667L544.313 943.159C543.881 940.432 541.32 938.571 538.592 939.003C535.865 939.435 534.004 941.996 534.436 944.723L541.475 989.169ZM926.123 465.762L922.078 462.823L542.369 985.448L546.414 988.387L550.459 991.326L930.168 468.701L926.123 465.762Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="water" data-to="fire"/>
-    
-    <!-- Metal → Madeira -->
-    <path d="M923.004 869.087C925.63 869.941 928.451 868.504 929.304 865.877C930.157 863.251 928.72 860.43 926.094 859.577L924.549 864.332L923.004 869.087ZM307.896 660.252C305.436 661.506 304.458 664.517 305.711 666.977L326.141 707.073C327.395 709.533 330.405 710.511 332.866 709.258C335.326 708.004 336.305 704.993 335.051 702.533L316.891 666.892L352.532 648.733C354.992 647.479 355.97 644.468 354.717 642.008C353.463 639.547 350.452 638.569 347.992 639.823L307.896 660.252ZM924.549 864.332L926.094 859.577L311.711 659.952L310.166 664.707L308.621 669.463L923.004 869.087L924.549 864.332Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="metal" data-to="wood"/>
-  </g>
+      <!-- Definições -->
+      <defs>
+        <marker id="arr-gen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="black"/>
+        </marker>
+        <marker id="arr-ctrl" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="white"/>
+        </marker>
+      </defs>
 
-  <!-- Elementos (círculos coloridos) -->
-  <!-- Fogo - Vermelho (#F05060) (Esquerda/centro-esq) — (150, 666) -->
-  <g class="wxd-node" data-elem="fire" tabindex="0" role="button" aria-label="Fogo — clique para explorar relações">
-    <circle cx="150" cy="666" r="150" fill="#F05060" class="wxd-node-bg"/>
-    <circle cx="150" cy="666" r="150" fill="none" stroke="#F05060" stroke-width="2" opacity="0" class="wxd-node-ring"/>
-    <text x="150" y="686" font-family="'Noto Serif SC'" font-size="80" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle">火</text>
-    <text x="150" y="856" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#D3232E" text-anchor="middle" text-transform="uppercase">FOGO</text>
-  </g>
+      <!-- ── CICLO DE GERAÇÃO (setas pretas) ── -->
+      <g class="wxd-gen-layer" id="gen-layer">
+        <path d="M650 165V160H650L650 165ZM945.857 266.265C948.586 265.844 950.456 263.289 950.035 260.56L943.161 216.088C942.739 213.359 940.185 211.489 937.456 211.911C934.727 212.333 932.856 214.887 933.278 217.616L939.388 257.146L899.858 263.256C897.129 263.678 895.258 266.232 895.68 268.961C896.102 271.691 898.656 273.561 901.385 273.139L945.857 266.265ZM649.933 160C647.172 160 644.933 162.239 644.934 165C644.934 167.762 647.172 170 649.934 170L649.934 165L649.933 160ZM650 165V170C759.27 170 860.258 205.4 942.139 265.358L945.093 261.324L948.047 257.29C864.51 196.119 761.466 160 650 160V165ZM649.934 165L649.934 170L650.001 170L650 165L650 160L649.933 160L649.934 165Z" fill="black" class="wxd-arrow wxd-gen" data-from="water" data-to="wood"/>
+        <path d="M1121.42 821.172C1122.68 823.63 1125.69 824.604 1128.15 823.346L1168.21 802.853C1170.67 801.595 1171.64 798.583 1170.38 796.124C1169.13 793.666 1166.11 792.692 1163.65 793.95L1128.04 812.166L1109.83 776.555C1108.57 774.097 1105.56 773.123 1103.1 774.381C1100.64 775.638 1099.67 778.651 1100.92 781.109L1121.42 821.172ZM1130.9 510.407C1130.05 507.778 1127.24 506.331 1124.61 507.175C1121.98 508.02 1120.53 510.836 1121.38 513.465L1126.14 511.936L1130.9 510.407ZM1150 665H1145C1145 718.167 1136.62 769.368 1121.11 817.357L1125.87 818.895L1130.63 820.432C1146.45 771.461 1155 719.224 1155 665H1150ZM1126.14 511.936L1121.38 513.465C1136.72 561.217 1145 612.136 1145 665H1150H1155C1155 611.086 1146.55 559.135 1130.9 510.407L1126.14 511.936Z" fill="black" class="wxd-arrow wxd-gen" data-from="wood" data-to="fire"/>
+        <path d="M943.218 1076.2C945.465 1074.6 945.985 1071.47 944.38 1069.23C942.775 1066.98 939.652 1066.46 937.405 1068.07L940.311 1072.13L943.218 1076.2ZM650.437 1161.48C648.5 1163.44 648.524 1166.61 650.492 1168.55L682.56 1200.12C684.528 1202.05 687.694 1202.03 689.631 1200.06C691.569 1198.09 691.544 1194.93 689.576 1192.99L661.071 1164.93L689.133 1136.42C691.07 1134.46 691.045 1131.29 689.077 1129.35C687.109 1127.42 683.944 1127.44 682.006 1129.41L650.437 1161.48ZM940.311 1072.13L937.405 1068.07C857.378 1125.23 759.617 1159.16 653.961 1159.98L654 1164.98L654.039 1169.98C761.82 1169.14 861.572 1134.53 943.218 1076.2L940.311 1072.13Z" fill="black" class="wxd-arrow wxd-gen" data-from="fire" data-to="earth"/>
+        <path d="M169.557 509.003C168.704 511.629 170.143 514.449 172.769 515.302C175.396 516.154 178.216 514.715 179.068 512.089L174.312 510.546L169.557 509.003ZM359.622 262.251C360.043 259.522 358.171 256.969 355.442 256.548L310.966 249.7C308.237 249.279 305.683 251.151 305.263 253.88C304.843 256.61 306.715 259.163 309.444 259.583L348.978 265.671L342.89 305.205C342.47 307.934 344.342 310.487 347.071 310.908C349.8 311.328 352.353 309.456 352.774 306.727L359.622 262.251ZM174.312 510.546L179.068 512.089C211.466 412.242 274.741 326.295 357.637 265.523L354.681 261.49L351.724 257.458C267.169 319.447 202.614 407.122 169.557 509.003L174.312 510.546Z" fill="black" class="wxd-arrow wxd-gen" data-from="earth" data-to="metal"/>
+        <path d="M350.358 1071.54C352.58 1073.18 355.71 1072.71 357.351 1070.48C358.991 1068.26 358.519 1065.13 356.298 1063.49L353.328 1067.51L350.358 1071.54ZM177.445 817.694C174.978 816.454 171.973 817.448 170.732 819.915L150.517 860.119C149.276 862.586 150.271 865.591 152.738 866.832C155.205 868.073 158.21 867.078 159.451 864.611L177.42 828.874L213.157 846.844C215.624 848.084 218.629 847.09 219.87 844.623C221.111 842.156 220.116 839.15 217.649 837.909L177.445 817.694ZM353.328 1067.51L356.298 1063.49C274.8 1003.32 212.423 918.758 179.946 820.591L175.199 822.161L170.452 823.732C203.59 923.899 267.229 1010.16 350.358 1071.54L353.328 1067.51Z" fill="black" class="wxd-arrow wxd-gen" data-from="metal" data-to="water"/>
+      </g>
 
-  <!-- Madeira - Verde (#50C880) (Topo-esquerda) — (493.05, 190.05) -->
-  <g class="wxd-node" data-elem="wood" tabindex="0" role="button" aria-label="Madeira — clique para explorar relações">
-    <circle cx="493.05" cy="190.05" r="150" fill="#50C880" class="wxd-node-bg"/>
-    <circle cx="493.05" cy="190.05" r="150" fill="none" stroke="#50C880" stroke-width="2" opacity="0" class="wxd-node-ring"/>
-    <text x="493.05" y="210.05" font-family="'Noto Serif SC'" font-size="80" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle">木</text>
-    <text x="493.05" y="380.05" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#147A48" text-anchor="middle" text-transform="uppercase">MADEIRA</text>
-  </g>
+      <!-- ── CICLO DE CONTROLE (setas brancas) ── -->
+      <g class="wxd-ctrl-layer" id="ctrl-layer" style="opacity:0;pointer-events:none">
+        <path d="M540 986C540 988.761 542.239 991 545 991C547.761 991 550 988.761 550 986L545 986L540 986ZM548.536 336.464C546.583 334.512 543.417 334.512 541.464 336.464L509.645 368.284C507.692 370.237 507.692 373.403 509.645 375.355C511.597 377.308 514.763 377.308 516.716 375.355L545 347.071L573.284 375.355C575.237 377.308 578.403 377.308 580.355 375.355C582.308 373.403 582.308 370.237 580.355 368.284L548.536 336.464ZM545 986L550 986L550 340L545 340L540 340L540 986L545 986Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="water" data-to="fire"/>
+        <path d="M310.455 657.87C307.829 658.723 306.391 661.544 307.245 664.17C308.098 666.796 310.919 668.234 313.545 667.38L312 662.625L310.455 657.87ZM930.838 465.27C932.091 462.81 931.113 459.799 928.652 458.545L888.557 438.115C886.097 436.862 883.086 437.84 881.832 440.301C880.578 442.761 881.557 445.772 884.017 447.025L919.658 465.185L901.498 500.825C900.244 503.286 901.222 506.297 903.683 507.55C906.143 508.804 909.154 507.826 910.408 505.365L930.838 465.27ZM312 662.625L313.545 667.38L927.928 467.755L926.382 463L924.837 458.245L310.455 657.87L312 662.625Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="fire" data-to="metal"/>
+        <path d="M551.592 338.162C549.969 335.927 546.842 335.432 544.608 337.055C542.374 338.678 541.879 341.805 543.502 344.039L547.547 341.1L551.592 338.162ZM926.474 868.664C929.201 869.096 931.763 867.235 932.195 864.508L939.234 820.062C939.666 817.334 937.805 814.773 935.078 814.341C932.35 813.909 929.789 815.77 929.357 818.497L923.1 858.005L883.592 851.747C880.865 851.315 878.304 853.176 877.872 855.904C877.44 858.631 879.301 861.192 882.028 861.624L926.474 868.664ZM547.547 341.1L543.502 344.039L923.211 866.664L927.256 863.725L931.301 860.786L551.592 338.162L547.547 341.1Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="metal" data-to="wood"/>
+        <path d="M930.168 468.701C931.791 466.467 931.296 463.34 929.062 461.717C926.828 460.094 923.701 460.589 922.078 462.823L926.123 465.762L930.168 468.701ZM541.475 989.169C541.907 991.897 544.469 993.758 547.196 993.326L591.642 986.286C594.369 985.854 596.23 983.293 595.798 980.565C595.366 977.838 592.805 975.977 590.078 976.409L550.57 982.667L544.313 943.159C543.881 940.432 541.32 938.571 538.592 939.003C535.865 939.435 534.004 941.996 534.436 944.723L541.475 989.169ZM926.123 465.762L922.078 462.823L542.369 985.448L546.414 988.387L550.459 991.326L930.168 468.701L926.123 465.762Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="wood" data-to="earth"/>
+        <path d="M923.004 869.087C925.63 869.941 928.451 868.504 929.304 865.877C930.157 863.251 928.72 860.43 926.094 859.577L924.549 864.332L923.004 869.087ZM307.896 660.252C305.436 661.506 304.458 664.517 305.711 666.977L326.141 707.073C327.395 709.533 330.405 710.511 332.866 709.258C335.326 708.004 336.305 704.993 335.051 702.533L316.891 666.892L352.532 648.733C354.992 647.479 355.97 644.468 354.717 642.008C353.463 639.547 350.452 638.569 347.992 639.823L307.896 660.252ZM924.549 864.332L926.094 859.577L311.711 659.952L310.166 664.707L308.621 669.463L923.004 869.087L924.549 864.332Z" fill="white" class="wxd-arrow wxd-ctrl" data-from="earth" data-to="water"/>
+      </g>
 
-  <!-- Terra - Amarelo (#E8B020) (Topo-direita) — (1055.18, 371.549) -->
-  <g class="wxd-node" data-elem="earth" tabindex="0" role="button" aria-label="Terra — clique para explorar relações">
-    <circle cx="1055.18" cy="371.549" r="150" fill="#E8B020" class="wxd-node-bg"/>
-    <circle cx="1055.18" cy="371.549" r="150" fill="none" stroke="#E8B020" stroke-width="2" opacity="0" class="wxd-node-ring"/>
-    <text x="1055.18" y="391.549" font-family="'Noto Serif SC'" font-size="80" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle">土</text>
-    <text x="1055.18" y="561.549" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#B87C14" text-anchor="middle" text-transform="uppercase">TERRA</text>
-  </g>
+      <!-- Elementos com labels interativas -->
+      <!-- ÁGUA - Azul (#0012D4) -->
+      <g class="wxd-node" data-elem="water" tabindex="0" role="button" aria-label="Água — clique para explorar relações">
+        <circle cx="497.13" cy="1141.44" r="150" fill="#0012D4" class="wxd-node-bg"/>
+        <circle cx="497.13" cy="1141.44" r="150" fill="none" stroke="#0012D4" stroke-width="2" opacity="0" class="wxd-node-ring"/>
+        <text x="497.13" y="1161.44" font-family="'Noto Serif SC'" font-size="80" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle">水</text>
+        <text x="497.13" y="1311.44" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#3060C0" text-anchor="middle" text-transform="uppercase">ÁGUA</text>
+      </g>
 
-  <!-- Metal - Cinza (#C8C8C8) (Baixo-direita) — (1054.82, 958.875) -->
-  <g class="wxd-node" data-elem="metal" tabindex="0" role="button" aria-label="Metal — clique para explorar relações">
-    <circle cx="1054.82" cy="958.875" r="150" fill="#C8C8C8" class="wxd-node-bg"/>
-    <circle cx="1054.82" cy="958.875" r="150" fill="none" stroke="#C8C8C8" stroke-width="2" opacity="0" class="wxd-node-ring"/>
-    <text x="1054.82" y="978.875" font-family="'Noto Serif SC'" font-size="80" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle">金</text>
-    <text x="1054.82" y="1148.875" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#848484" text-anchor="middle" text-transform="uppercase">METAL</text>
-  </g>
+      <!-- MADEIRA - Verde (#00FF44) -->
+      <g class="wxd-node" data-elem="wood" tabindex="0" role="button" aria-label="Madeira — clique para explorar relações">
+        <circle cx="150" cy="666" r="150" fill="#00FF44" class="wxd-node-bg"/>
+        <circle cx="150" cy="666" r="150" fill="none" stroke="#00FF44" stroke-width="2" opacity="0" class="wxd-node-ring"/>
+        <text x="150" y="686" font-family="'Noto Serif SC'" font-size="80" fill="rgba(0,0,0,.92)" text-anchor="middle" dominant-baseline="middle">木</text>
+        <text x="150" y="836" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#007722" text-anchor="middle" text-transform="uppercase">MADEIRA</text>
+      </g>
 
-  <!-- Água - Azul (#7AA0E0) (Baixo-esquerda) — (497.13, 1141.44) -->
-  <g class="wxd-node" data-elem="water" tabindex="0" role="button" aria-label="Água — clique para explorar relações">
-    <circle cx="497.13" cy="1141.44" r="150" fill="#7AA0E0" class="wxd-node-bg"/>
-    <circle cx="497.13" cy="1141.44" r="150" fill="none" stroke="#7AA0E0" stroke-width="2" opacity="0" class="wxd-node-ring"/>
-    <text x="497.13" y="1161.44" font-family="'Noto Serif SC'" font-size="80" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle">水</text>
-    <text x="497.13" y="1331.44" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#3060C0" text-anchor="middle" text-transform="uppercase">ÁGUA</text>
-  </g>
+      <!-- FOGO - Vermelho (#EC0E11) -->
+      <g class="wxd-node" data-elem="fire" tabindex="0" role="button" aria-label="Fogo — clique para explorar relações">
+        <circle cx="493.05" cy="190.05" r="150" fill="#EC0E11" class="wxd-node-bg"/>
+        <circle cx="493.05" cy="190.05" r="150" fill="none" stroke="#EC0E11" stroke-width="2" opacity="0" class="wxd-node-ring"/>
+        <text x="493.05" y="210.05" font-family="'Noto Serif SC'" font-size="80" fill="rgba(255,255,255,.92)" text-anchor="middle" dominant-baseline="middle">火</text>
+        <text x="493.05" y="360.05" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#B00000" text-anchor="middle" text-transform="uppercase">FOGO</text>
+      </g>
 
-</svg>
+      <!-- TERRA - Amarelo (#FFC800) -->
+      <g class="wxd-node" data-elem="earth" tabindex="0" role="button" aria-label="Terra — clique para explorar relações">
+        <circle cx="1055.18" cy="371.549" r="150" fill="#FFC800" class="wxd-node-bg"/>
+        <circle cx="1055.18" cy="371.549" r="150" fill="none" stroke="#FFC800" stroke-width="2" opacity="0" class="wxd-node-ring"/>
+        <text x="1055.18" y="391.549" font-family="'Noto Serif SC'" font-size="80" fill="rgba(0,0,0,.92)" text-anchor="middle" dominant-baseline="middle">土</text>
+        <text x="1055.18" y="541.549" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#B87C14" text-anchor="middle" text-transform="uppercase">TERRA</text>
+      </g>
+
+      <!-- METAL - Cinza (#D9D9D9) -->
+      <g class="wxd-node" data-elem="metal" tabindex="0" role="button" aria-label="Metal — clique para explorar relações">
+        <circle cx="1054.82" cy="958.875" r="150" fill="#D9D9D9" class="wxd-node-bg"/>
+        <circle cx="1054.82" cy="958.875" r="150" fill="none" stroke="#D9D9D9" stroke-width="2" opacity="0" class="wxd-node-ring"/>
+        <text x="1054.82" y="978.875" font-family="'Noto Serif SC'" font-size="80" fill="rgba(0,0,0,.92)" text-anchor="middle" dominant-baseline="middle">金</text>
+        <text x="1054.82" y="1128.875" font-family="'Noto Sans'" font-size="32" font-weight="600" letter-spacing="2.4" fill="#848484" text-anchor="middle" text-transform="uppercase">METAL</text>
+      </g>
+
+    </svg>
   </div><!-- .wxd-wrap -->
 
   <aside class="callout" aria-label="Atenção">
