@@ -165,9 +165,9 @@
       <span class="wxd-info-hint">Clique em um elemento para explorar suas relações</span>
     </div>
 
-    <!-- SVG pentagonal -->
+    <!-- SVG pentagonal com círculo de inscrição e simetria perfeita -->
     <svg id="wxd-diagram" viewBox="0 0 400 400" role="img"
-         aria-label="Diagrama pentagonal dos cinco elementos com ciclos de geração e controle"
+         aria-label="Diagrama pentagonal dos cinco elementos com ciclos de geração e controle, inscrito em círculo"
          class="wxd-svg" xmlns="http://www.w3.org/2000/svg">
 
       <!-- Definições: setas -->
@@ -186,53 +186,46 @@
         </marker>
       </defs>
 
+      <!-- Círculo de inscrição (guia visual sutil) -->
+      <circle cx="200" cy="200" r="130" fill="none" stroke="var(--gb)" stroke-width="1" opacity="0.4" stroke-dasharray="2,4"/>
+
       <!-- ── CICLO DE GERAÇÃO (pentágono externo, sentido horário) ── -->
-      <!-- Água→Madeira, Madeira→Fogo, Fogo→Terra, Terra→Metal, Metal→Água -->
+      <!-- Fogo(top)→Terra→Metal→Água→Madeira→Fogo -->
       <g class="wxd-gen-layer" id="gen-layer">
-        <path class="wxd-arrow wxd-gen" data-from="wood" data-to="fire"
-              d="M215,88 Q290,130 272,192" marker-end="url(#arr-gen)"/>
         <path class="wxd-arrow wxd-gen" data-from="fire" data-to="earth"
-              d="M268,212 Q285,290 240,316" marker-end="url(#arr-gen)"/>
+              d="M200,78 Q260,150 240,270" marker-end="url(#arr-gen)"/>
         <path class="wxd-arrow wxd-gen" data-from="earth" data-to="metal"
-              d="M218,326 Q148,332 118,284" marker-end="url(#arr-gen)"/>
+              d="M232,280 Q164,310 128,270" marker-end="url(#arr-gen)"/>
         <path class="wxd-arrow wxd-gen" data-from="metal" data-to="water"
-              d="M110,260 Q95,175 128,128" marker-end="url(#arr-gen)"/>
+              d="M115,265 Q80,170 130,130" marker-end="url(#arr-gen)"/>
         <path class="wxd-arrow wxd-gen" data-from="water" data-to="wood"
-              d="M152,108 Q182,72 196,80" marker-end="url(#arr-gen)"/>
+              d="M140,115 Q155,70 180,85" marker-end="url(#arr-gen)"/>
+        <path class="wxd-arrow wxd-gen" data-from="wood" data-to="fire"
+              d="M220,90 Q260,120 190,78" marker-end="url(#arr-gen)"/>
       </g>
 
       <!-- ── CICLO DE CONTROLE (estrela interna) ── -->
-      <!-- Madeira→Terra, Terra→Água, Água→Fogo, Fogo→Metal, Metal→Madeira -->
+      <!-- Fogo→Metal, Metal→Madeira, Madeira→Terra, Terra→Água, Água→Fogo -->
       <g class="wxd-ctrl-layer" id="ctrl-layer" style="opacity:0;pointer-events:none">
-        <path class="wxd-arrow wxd-ctrl" data-from="wood" data-to="earth"
-              d="M205,95 L228,310" marker-end="url(#arr-ctrl)"/>
-        <path class="wxd-arrow wxd-ctrl" data-from="earth" data-to="water"
-              d="M222,328 L138,140" marker-end="url(#arr-ctrl)"/>
-        <path class="wxd-arrow wxd-ctrl" data-from="water" data-to="fire"
-              d="M142,115 L258,198" marker-end="url(#arr-ctrl)"/>
         <path class="wxd-arrow wxd-ctrl" data-from="fire" data-to="metal"
-              d="M258,216 L122,274" marker-end="url(#arr-ctrl)"/>
+              d="M200,78 L128,270" marker-end="url(#arr-ctrl)"/>
         <path class="wxd-arrow wxd-ctrl" data-from="metal" data-to="wood"
-              d="M108,258 L196,98" marker-end="url(#arr-ctrl)"/>
+              d="M128,270 L200,60" marker-end="url(#arr-ctrl)"/>
+        <path class="wxd-arrow wxd-ctrl" data-from="wood" data-to="earth"
+              d="M200,60 L240,270" marker-end="url(#arr-ctrl)"/>
+        <path class="wxd-arrow wxd-ctrl" data-from="earth" data-to="water"
+              d="M240,270 L130,130" marker-end="url(#arr-ctrl)"/>
+        <path class="wxd-arrow wxd-ctrl" data-from="water" data-to="fire"
+              d="M130,130 L200,78" marker-end="url(#arr-ctrl)"/>
       </g>
 
-      <!-- ── NÓS DOS ELEMENTOS ── -->
-      <!-- Madeira — topo (200, 88) -->
-      <g class="wxd-node" data-elem="wood" tabindex="0" role="button"
-         aria-label="Madeira — clique para explorar relações"
-         transform="translate(200,88)">
-        <circle r="38" class="wxd-node-bg" style="fill:var(--od)"/>
-        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--od);stroke-width:2;opacity:0"/>
-        <text class="wxd-node-hanzi" y="6" text-anchor="middle"
-              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">木</text>
-        <text class="wxd-node-label" y="58" text-anchor="middle"
-              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--om);text-transform:uppercase">MADEIRA</text>
-      </g>
+      <!-- ── NÓS DOS ELEMENTOS INSCRITOS EM CÍRCULO ── -->
+      <!-- Centro: 200, 200 | Raio: 130px | 5 elementos equidistantes -->
 
-      <!-- Fogo — direita (272, 202) -->
+      <!-- Fogo — TOPO (Yang, máximo) — 90° (200, 70) -->
       <g class="wxd-node" data-elem="fire" tabindex="0" role="button"
-         aria-label="Fogo — clique para explorar relações"
-         transform="translate(272,202)">
+         aria-label="Fogo (Yang) — topo — clique para explorar relações"
+         transform="translate(200,70)">
         <circle r="38" class="wxd-node-bg" style="fill:var(--fd)"/>
         <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--fd);stroke-width:2;opacity:0"/>
         <text class="wxd-node-hanzi" y="6" text-anchor="middle"
@@ -241,22 +234,34 @@
               style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--fm);text-transform:uppercase">FOGO</text>
       </g>
 
-      <!-- Terra — baixo-direita (236, 322) -->
-      <g class="wxd-node" data-elem="earth" tabindex="0" role="button"
-         aria-label="Terra — clique para explorar relações"
-         transform="translate(236,322)">
-        <circle r="38" class="wxd-node-bg" style="fill:var(--ed)"/>
-        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--ed);stroke-width:2;opacity:0"/>
+      <!-- Madeira — ESQUERDA-SUPERIOR — 162° (85, 140) -->
+      <g class="wxd-node" data-elem="wood" tabindex="0" role="button"
+         aria-label="Madeira — clique para explorar relações"
+         transform="translate(85,140)">
+        <circle r="38" class="wxd-node-bg" style="fill:var(--od)"/>
+        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--od);stroke-width:2;opacity:0"/>
         <text class="wxd-node-hanzi" y="6" text-anchor="middle"
-              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">土</text>
+              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">木</text>
         <text class="wxd-node-label" y="58" text-anchor="middle"
-              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--em);text-transform:uppercase">TERRA</text>
+              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--om);text-transform:uppercase">MADEIRA</text>
       </g>
 
-      <!-- Metal — baixo-esquerda (128, 322) -->
+      <!-- Água — ESQUERDA-INFERIOR — 234° (130,310) -->
+      <g class="wxd-node" data-elem="water" tabindex="0" role="button"
+         aria-label="Água (Yin) — base — clique para explorar relações"
+         transform="translate(130,310)">
+        <circle r="38" class="wxd-node-bg" style="fill:var(--wd)"/>
+        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--wd);stroke-width:2;opacity:0"/>
+        <text class="wxd-node-hanzi" y="6" text-anchor="middle"
+              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">水</text>
+        <text class="wxd-node-label" y="58" text-anchor="middle"
+              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--wm);text-transform:uppercase">ÁGUA</text>
+      </g>
+
+      <!-- Metal — DIREITA-INFERIOR — 306° (270,270) -->
       <g class="wxd-node" data-elem="metal" tabindex="0" role="button"
          aria-label="Metal — clique para explorar relações"
-         transform="translate(128,322)">
+         transform="translate(270,270)">
         <circle r="38" class="wxd-node-bg" style="fill:var(--md)"/>
         <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--md);stroke-width:2;opacity:0"/>
         <text class="wxd-node-hanzi" y="6" text-anchor="middle"
@@ -265,16 +270,16 @@
               style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--mm);text-transform:uppercase">METAL</text>
       </g>
 
-      <!-- Água — esquerda (128, 202) -->
-      <g class="wxd-node" data-elem="water" tabindex="0" role="button"
-         aria-label="Água — clique para explorar relações"
-         transform="translate(128,202)">
-        <circle r="38" class="wxd-node-bg" style="fill:var(--wd)"/>
-        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--wd);stroke-width:2;opacity:0"/>
+      <!-- Terra — DIREITA-SUPERIOR — 18° (315,140) -->
+      <g class="wxd-node" data-elem="earth" tabindex="0" role="button"
+         aria-label="Terra — clique para explorar relações"
+         transform="translate(315,140)">
+        <circle r="38" class="wxd-node-bg" style="fill:var(--ed)"/>
+        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--ed);stroke-width:2;opacity:0"/>
         <text class="wxd-node-hanzi" y="6" text-anchor="middle"
-              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">水</text>
+              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">土</text>
         <text class="wxd-node-label" y="58" text-anchor="middle"
-              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--wm);text-transform:uppercase">ÁGUA</text>
+              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--em);text-transform:uppercase">TERRA</text>
       </g>
 
     </svg>
