@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../styles/main.css">
+<link rel="stylesheet" href="/public/main.css">
 <style>
 /* Flip cards 3D — D4 */
 .trunk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s1);margin:var(--s5) 0}
@@ -300,7 +300,7 @@
 </footer>
 
 <script type="module">
-  import { initNav } from '../../components/nav.js';
+  import { initNav } from '/public/components/nav.js';
   initNav({ current: 6, total: 12 });
 
   // Flip cards — toggle por click, Enter, Space; reset por Escape
