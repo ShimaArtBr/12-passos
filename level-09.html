@@ -13,24 +13,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/public/main.css">
 <style>
-/* Pilares ilustrativos estáticos */
-.pillar-demo{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin:var(--s5) 0}
-.pillar-col{display:flex;flex-direction:column;gap:4px;align-items:center}
-.pillar-label{font-family:var(--fm2);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--id);margin-bottom:4px}
-.pillar-cell{width:100%;background:var(--sc);border:1px solid var(--gb);border-radius:var(--r);padding:var(--s2) var(--s1);text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
-.pillar-hanzi{font-family:var(--fc);font-size:1.75rem;line-height:1;font-style:normal;color:var(--ip)}
-.pillar-pinyin{font-family:var(--fd2);font-size:.563rem;color:var(--id);font-weight:400}
-.pillar-desc{font-family:var(--fd2);font-size:.625rem;color:var(--is);font-weight:300}
-.pillar-row-label{font-family:var(--fm2);font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--id);text-align:center;margin:var(--s2) 0 var(--s1)}
-.pillar-heaven{border-top:2px solid var(--gold)}
-.pillar-earth{border-top:2px solid color-mix(in srgb,var(--ip) 30%,transparent)}
-/* Tabela de correspondências */
+
 .corr-table{width:100%;border-collapse:collapse;margin:var(--s4) 0;font-family:var(--fd2);font-size:.813rem}
 .corr-table th{font-family:var(--fm2);font-size:.563rem;letter-spacing:.1em;text-transform:uppercase;color:var(--id);padding:var(--s1) var(--s2);text-align:left;border-bottom:1px solid var(--gb)}
 .corr-table td{padding:var(--s2);border-bottom:1px solid color-mix(in srgb,var(--gb) 40%,transparent);color:var(--is);vertical-align:top}
 .corr-table td:first-child{font-family:var(--fc);font-size:1.1rem;color:var(--ip);font-style:normal;text-align:center;width:44px}
 .corr-table tr:hover td{background:var(--si)}
-@media(max-width:500px){.pillar-demo{gap:var(--s1)}.pillar-hanzi{font-size:1.4rem}}
+@media(max-width:500px){}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="/manifest.json">
@@ -79,15 +68,74 @@
   <h3>Os Quatro Pilares</h3>
   <p style="font-family:var(--fm2);font-size:.625rem;color:var(--id);letter-spacing:.06em;margin-bottom:0">Exemplo ilustrativo · Leitura da direita para a esquerda (tradição chinesa)</p>
 
-  <div class="pillar-demo" role="list" aria-label="Os quatro pilares do BaZi">
-
-    <div class="pillar-col" role="listitem">
-      <span class="pillar-label">Hora</span>
-      <div class="pillar-cell pillar-heaven">
-        <span class="pillar-hanzi" style="color:var(--od)">甲</span>
-        <span class="pillar-pinyin">Jiǎ</span>
-        <span class="pillar-desc">Yang Madeira</span>
+    <div class="bazi-map bazi-map--revealed" role="list" aria-label="Os quatro pilares do BaZi">
+    <div class="bazi-pillar" tabindex="0" role="button" aria-label="Pilar do Hora: 甲 Jiǎ, 子 Zǐ">
+      <div class="bazi-pillar__stem" style="background:var(--od);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
+        <span class="bazi-pillar__char" style="color:rgba(255,255,255,.95)" lang="zh-Hans">甲</span>
+        <span class="bazi-pillar__badge">Madeira Yang</span>
+        <span class="bazi-pillar__label">Yang</span>
       </div>
+      <div class="bazi-pillar__header">HORA · 时</div>
+      <div class="bazi-pillar__branch" style="background:var(--wd);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
+        <span class="bazi-pillar__char" style="color:rgba(255,255,255,.95)" lang="zh-Hans">子</span>
+        <span class="bazi-pillar__label">Rato · Água</span>
+        <div class="bazi-pillar__hidden-stems">
+          <span class="bazi-pillar__hidden-stem" style="background:var(--wm);color:rgba(255,255,255,.85)" lang="zh-Hans">癸</span>
+        </div>
+      </div>
+    </div>
+    <div class="bazi-pillar is-day-master" tabindex="0" role="button" aria-label="Pilar do Dia: 丙 Bǐng, 午 Wǔ">
+      <div class="bazi-pillar__stem" style="background:var(--fd);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
+        <span class="bazi-pillar__char" style="color:rgba(255,255,255,.95)" lang="zh-Hans">丙</span>
+        <span class="bazi-pillar__badge">Fogo Yang</span>
+        <span class="bazi-pillar__label">Yang</span>
+      </div>
+      <div class="bazi-pillar__header">DIA · 日 ✦</div>
+      <div class="bazi-pillar__branch" style="background:var(--fd);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
+        <span class="bazi-pillar__char" style="color:rgba(255,255,255,.95)" lang="zh-Hans">午</span>
+        <span class="bazi-pillar__label">Cavalo · Fogo</span>
+        <div class="bazi-pillar__hidden-stems">
+          <span class="bazi-pillar__hidden-stem" style="background:var(--fd);color:rgba(255,255,255,.85)" lang="zh-Hans">丙</span>
+          <span class="bazi-pillar__hidden-stem" style="background:var(--em);color:rgba(255,255,255,.85)" lang="zh-Hans">己</span>
+        </div>
+      </div>
+    </div>
+    <div class="bazi-pillar" tabindex="0" role="button" aria-label="Pilar do Mês: 庚 Gēng, 戌 Xū">
+      <div class="bazi-pillar__stem" style="background:var(--md);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
+        <span class="bazi-pillar__char" style="color:rgba(255,255,255,.95)" lang="zh-Hans">庚</span>
+        <span class="bazi-pillar__badge">Metal Yang</span>
+        <span class="bazi-pillar__label">Yang</span>
+      </div>
+      <div class="bazi-pillar__header">MÊS · 月</div>
+      <div class="bazi-pillar__branch" style="background:var(--ed);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
+        <span class="bazi-pillar__char" style="color:rgba(255,255,255,.95)" lang="zh-Hans">戌</span>
+        <span class="bazi-pillar__label">Cão · Terra</span>
+        <div class="bazi-pillar__hidden-stems">
+          <span class="bazi-pillar__hidden-stem" style="background:var(--ed);color:rgba(255,255,255,.85)" lang="zh-Hans">戊</span>
+          <span class="bazi-pillar__hidden-stem" style="background:var(--mm);color:rgba(255,255,255,.85)" lang="zh-Hans">辛</span>
+          <span class="bazi-pillar__hidden-stem" style="background:var(--fm);color:rgba(255,255,255,.85)" lang="zh-Hans">丁</span>
+        </div>
+      </div>
+    </div>
+    <div class="bazi-pillar" tabindex="0" role="button" aria-label="Pilar do Ano: 壬 Rén, 申 Shēn">
+      <div class="bazi-pillar__stem" style="background:var(--wd);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
+        <span class="bazi-pillar__char" style="color:rgba(255,255,255,.95)" lang="zh-Hans">壬</span>
+        <span class="bazi-pillar__badge">Água Yang</span>
+        <span class="bazi-pillar__label">Yang</span>
+      </div>
+      <div class="bazi-pillar__header">ANO · 年</div>
+      <div class="bazi-pillar__branch" style="background:var(--md);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)">
+        <span class="bazi-pillar__char" style="color:rgba(255,255,255,.95)" lang="zh-Hans">申</span>
+        <span class="bazi-pillar__label">Macaco · Metal</span>
+        <div class="bazi-pillar__hidden-stems">
+          <span class="bazi-pillar__hidden-stem" style="background:var(--md);color:rgba(255,255,255,.85)" lang="zh-Hans">庚</span>
+          <span class="bazi-pillar__hidden-stem" style="background:var(--wd);color:rgba(255,255,255,.85)" lang="zh-Hans">壬</span>
+          <span class="bazi-pillar__hidden-stem" style="background:var(--ed);color:rgba(255,255,255,.85)" lang="zh-Hans">戊</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
       <div class="pillar-cell pillar-earth">
         <span class="pillar-hanzi">子</span>
         <span class="pillar-pinyin">Zǐ</span>

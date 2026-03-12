@@ -22,11 +22,39 @@
 .wx-body{padding:var(--s1) var(--s2) var(--s2);background:var(--sc)}
 .wx-name{font-family:var(--fd2);font-size:.563rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px}
 .wx-desc{font-family:var(--fd2);font-size:.75rem;font-weight:300;color:var(--im);line-height:1.5}
-/* ciclos placeholder — D4 adiciona SVG interativo */
+/* ciclos Wu Xing interativo */
 .cycle-placeholder{background:var(--sc);border:1px dashed var(--gb);border-radius:var(--rl);padding:var(--s8) var(--s4);text-align:center;margin:var(--s5) 0}
 .cycle-placeholder p{font-family:var(--fm2);font-size:.75rem;color:var(--id);letter-spacing:.06em}
 .cycle-placeholder span{color:var(--gold)}
 @media(max-width:600px){.wx-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ── DIAGRAMA WU XING INTERATIVO ── */
+.wxd-wrap{margin:var(--s5) 0;background:var(--sc);border:1px solid var(--gb);border-radius:var(--rl);padding:var(--s4) var(--s3) var(--s3);user-select:none}
+.wxd-tabs{display:flex;gap:var(--s1);margin-bottom:var(--s3)}
+.wxd-tab{font-family:var(--fd2);font-size:.625rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--gb);border-radius:var(--r);background:transparent;color:var(--im);padding:6px 16px;cursor:pointer;transition:all .2s}
+.wxd-tab--active{background:var(--gs);border-color:var(--gold);color:var(--gold)}
+.wxd-tab:hover:not(.wxd-tab--active){color:var(--ip);background:var(--si)}
+.wxd-tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wxd-info{min-height:48px;margin-bottom:var(--s2);padding:var(--s1) var(--s2);border-radius:var(--r);background:var(--si);transition:all .3s}
+.wxd-info-hint{font-family:var(--fm2);font-size:.625rem;color:var(--id);letter-spacing:.06em}
+.wxd-info-content{display:none;gap:var(--s2);align-items:flex-start}
+.wxd-info-content.visible{display:flex}
+.wxd-info-glyph{font-family:var(--fc);font-size:1.8rem;line-height:1;font-style:normal;flex-shrink:0}
+.wxd-info-name{font-family:var(--fd2);font-size:.563rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px}
+.wxd-info-rel{font-family:var(--fd2);font-size:.75rem;font-weight:300;color:var(--is);line-height:1.5}
+.wxd-svg{width:100%;max-width:400px;display:block;margin:0 auto;overflow:visible}
+.wxd-node{cursor:pointer}
+.wxd-node:focus{outline:none}
+.wxd-node:hover .wxd-node-bg,.wxd-node:focus .wxd-node-bg{filter:brightness(1.25)}
+.wxd-node:hover .wxd-node-ring,.wxd-node:focus .wxd-node-ring{opacity:.5}
+.wxd-node.active .wxd-node-ring{opacity:1!important;stroke-width:3}
+.wxd-node.dimmed .wxd-node-bg,.wxd-node.dimmed .wxd-node-label{opacity:.3}
+.wxd-arrow{fill:none;stroke-width:2;transition:opacity .3s,stroke-width .2s}
+.wxd-gen{stroke:var(--om);opacity:.55}
+.wxd-ctrl{stroke:var(--gold);opacity:.55}
+.wxd-arrow.active-arrow{stroke-width:3;opacity:1}
+.wxd-arrow.dimmed-arrow{opacity:.08}
+.wxd-gen-layer,.wxd-ctrl-layer{transition:opacity .35s}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="/manifest.json">
@@ -117,11 +145,140 @@
   <p><strong>Ciclo de Geração</strong> (<span style="font-family:var(--fc)">相生</span>, Xiāng Shēng): Água → Madeira → Fogo → Terra → Metal → Água… A Água nutre a Madeira. A Madeira alimenta o Fogo. O Fogo produz cinzas (Terra). A Terra revela o Metal. O Metal condensado produz Água.</p>
   <p><strong>Ciclo de Controle</strong> (<span style="font-family:var(--fc)">相剋</span>, Xiāng Kè): Água → Fogo → Metal → Madeira → Terra → Água… A Água apaga o Fogo. O Fogo funde o Metal. O Metal corta a Madeira. A Madeira finca raízes na Terra. A Terra absorve a Água.</p>
 
-  <!-- PLACEHOLDER INTERATIVO — D4 substituirá por SVG animado -->
-  <div class="cycle-placeholder" id="cycle-interactive" aria-label="Diagrama interativo dos ciclos Wu Xing — em desenvolvimento">
-    <p style="font-size:1.5rem;margin-bottom:var(--s2)" aria-hidden="true">五行</p>
-    <p>Diagrama interativo dos ciclos<br><span>em desenvolvimento · D4</span></p>
-  </div>
+  <!-- INTERATIVO D4 — Diagrama SVG dos ciclos Wu Xing -->
+  <div class="wxd-wrap" role="region" aria-label="Diagrama interativo dos ciclos Wu Xing">
+
+    <!-- Toggle de ciclo -->
+    <div class="wxd-tabs" role="tablist" aria-label="Selecionar ciclo">
+      <button class="wxd-tab wxd-tab--active" role="tab" aria-selected="true"
+              aria-controls="wxd-diagram" id="tab-gen" data-cycle="gen">
+        相生 · Geração
+      </button>
+      <button class="wxd-tab" role="tab" aria-selected="false"
+              aria-controls="wxd-diagram" id="tab-ctrl" data-cycle="ctrl">
+        相剋 · Controle
+      </button>
+    </div>
+
+    <!-- Painel de info do elemento ativo -->
+    <div class="wxd-info" id="wxd-info" aria-live="polite" aria-atomic="true">
+      <span class="wxd-info-hint">Clique em um elemento para explorar suas relações</span>
+    </div>
+
+    <!-- SVG pentagonal -->
+    <svg id="wxd-diagram" viewBox="0 0 400 400" role="img"
+         aria-label="Diagrama pentagonal dos cinco elementos com ciclos de geração e controle"
+         class="wxd-svg" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Definições: setas -->
+      <defs>
+        <marker id="arr-gen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="var(--wxd-gen-color, #50C880)"/>
+        </marker>
+        <marker id="arr-ctrl" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="var(--wxd-ctrl-color, #C09A4A)"/>
+        </marker>
+        <marker id="arr-gen-hi" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#fff"/>
+        </marker>
+        <marker id="arr-ctrl-hi" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#fff"/>
+        </marker>
+      </defs>
+
+      <!-- ── CICLO DE GERAÇÃO (pentágono externo, sentido horário) ── -->
+      <!-- Água→Madeira, Madeira→Fogo, Fogo→Terra, Terra→Metal, Metal→Água -->
+      <g class="wxd-gen-layer" id="gen-layer">
+        <path class="wxd-arrow wxd-gen" data-from="wood" data-to="fire"
+              d="M215,88 Q290,130 272,192" marker-end="url(#arr-gen)"/>
+        <path class="wxd-arrow wxd-gen" data-from="fire" data-to="earth"
+              d="M268,212 Q285,290 240,316" marker-end="url(#arr-gen)"/>
+        <path class="wxd-arrow wxd-gen" data-from="earth" data-to="metal"
+              d="M218,326 Q148,332 118,284" marker-end="url(#arr-gen)"/>
+        <path class="wxd-arrow wxd-gen" data-from="metal" data-to="water"
+              d="M110,260 Q95,175 128,128" marker-end="url(#arr-gen)"/>
+        <path class="wxd-arrow wxd-gen" data-from="water" data-to="wood"
+              d="M152,108 Q182,72 196,80" marker-end="url(#arr-gen)"/>
+      </g>
+
+      <!-- ── CICLO DE CONTROLE (estrela interna) ── -->
+      <!-- Madeira→Terra, Terra→Água, Água→Fogo, Fogo→Metal, Metal→Madeira -->
+      <g class="wxd-ctrl-layer" id="ctrl-layer" style="opacity:0;pointer-events:none">
+        <path class="wxd-arrow wxd-ctrl" data-from="wood" data-to="earth"
+              d="M205,95 L228,310" marker-end="url(#arr-ctrl)"/>
+        <path class="wxd-arrow wxd-ctrl" data-from="earth" data-to="water"
+              d="M222,328 L138,140" marker-end="url(#arr-ctrl)"/>
+        <path class="wxd-arrow wxd-ctrl" data-from="water" data-to="fire"
+              d="M142,115 L258,198" marker-end="url(#arr-ctrl)"/>
+        <path class="wxd-arrow wxd-ctrl" data-from="fire" data-to="metal"
+              d="M258,216 L122,274" marker-end="url(#arr-ctrl)"/>
+        <path class="wxd-arrow wxd-ctrl" data-from="metal" data-to="wood"
+              d="M108,258 L196,98" marker-end="url(#arr-ctrl)"/>
+      </g>
+
+      <!-- ── NÓS DOS ELEMENTOS ── -->
+      <!-- Madeira — topo (200, 88) -->
+      <g class="wxd-node" data-elem="wood" tabindex="0" role="button"
+         aria-label="Madeira — clique para explorar relações"
+         transform="translate(200,88)">
+        <circle r="38" class="wxd-node-bg" style="fill:var(--od)"/>
+        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--od);stroke-width:2;opacity:0"/>
+        <text class="wxd-node-hanzi" y="6" text-anchor="middle"
+              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">木</text>
+        <text class="wxd-node-label" y="58" text-anchor="middle"
+              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--om);text-transform:uppercase">MADEIRA</text>
+      </g>
+
+      <!-- Fogo — direita (272, 202) -->
+      <g class="wxd-node" data-elem="fire" tabindex="0" role="button"
+         aria-label="Fogo — clique para explorar relações"
+         transform="translate(272,202)">
+        <circle r="38" class="wxd-node-bg" style="fill:var(--fd)"/>
+        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--fd);stroke-width:2;opacity:0"/>
+        <text class="wxd-node-hanzi" y="6" text-anchor="middle"
+              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">火</text>
+        <text class="wxd-node-label" y="58" text-anchor="middle"
+              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--fm);text-transform:uppercase">FOGO</text>
+      </g>
+
+      <!-- Terra — baixo-direita (236, 322) -->
+      <g class="wxd-node" data-elem="earth" tabindex="0" role="button"
+         aria-label="Terra — clique para explorar relações"
+         transform="translate(236,322)">
+        <circle r="38" class="wxd-node-bg" style="fill:var(--ed)"/>
+        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--ed);stroke-width:2;opacity:0"/>
+        <text class="wxd-node-hanzi" y="6" text-anchor="middle"
+              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">土</text>
+        <text class="wxd-node-label" y="58" text-anchor="middle"
+              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--em);text-transform:uppercase">TERRA</text>
+      </g>
+
+      <!-- Metal — baixo-esquerda (128, 322) -->
+      <g class="wxd-node" data-elem="metal" tabindex="0" role="button"
+         aria-label="Metal — clique para explorar relações"
+         transform="translate(128,322)">
+        <circle r="38" class="wxd-node-bg" style="fill:var(--md)"/>
+        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--md);stroke-width:2;opacity:0"/>
+        <text class="wxd-node-hanzi" y="6" text-anchor="middle"
+              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">金</text>
+        <text class="wxd-node-label" y="58" text-anchor="middle"
+              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--mm);text-transform:uppercase">METAL</text>
+      </g>
+
+      <!-- Água — esquerda (128, 202) -->
+      <g class="wxd-node" data-elem="water" tabindex="0" role="button"
+         aria-label="Água — clique para explorar relações"
+         transform="translate(128,202)">
+        <circle r="38" class="wxd-node-bg" style="fill:var(--wd)"/>
+        <circle r="38" class="wxd-node-ring" style="fill:none;stroke:var(--wd);stroke-width:2;opacity:0"/>
+        <text class="wxd-node-hanzi" y="6" text-anchor="middle"
+              style="font-family:var(--fc);font-size:28px;fill:rgba(255,255,255,.92);font-style:normal">水</text>
+        <text class="wxd-node-label" y="58" text-anchor="middle"
+              style="font-family:var(--fd2);font-size:9px;font-weight:600;letter-spacing:.08em;fill:var(--wm);text-transform:uppercase">ÁGUA</text>
+      </g>
+
+    </svg>
+  </div><!-- .wxd-wrap -->
 
   <aside class="callout" aria-label="Atenção">
     <div class="callout-bar" style="background:var(--wm)"></div>
@@ -200,6 +357,157 @@
 <script type="module">
   import { initNav } from '/public/components/nav.js';
   initNav({ current: 5, total: 12 });
+
+  // ── Wu Xing Diagram ────────────────────────────────────────────────
+  const DATA = {
+    wood:  { hanzi:'木', name:'Madeira', color:'var(--om)' },
+    fire:  { hanzi:'火', name:'Fogo',    color:'var(--fm)' },
+    earth: { hanzi:'土', name:'Terra',   color:'var(--em)' },
+    metal: { hanzi:'金', name:'Metal',   color:'var(--mm)' },
+    water: { hanzi:'水', name:'Água',    color:'var(--wm)' },
+  };
+
+  // relações por ciclo: [quem gera/controla este elemento, quem este gera/controla]
+  const RELS = {
+    gen: {
+      wood:  { gives:'fire',  receives:'water',
+               gives_txt:'A Madeira alimenta o Fogo — a lenha nutre a chama.',
+               recv_txt:'A Água nutre a Madeira — a chuva faz a árvore crescer.' },
+      fire:  { gives:'earth', receives:'wood',
+               gives_txt:'O Fogo produz cinzas (Terra) — o que queimou alimenta o solo.',
+               recv_txt:'A Madeira alimenta o Fogo — a lenha sustenta a chama.' },
+      earth: { gives:'metal', receives:'fire',
+               gives_txt:'A Terra revela o Metal — o minério está no solo.',
+               recv_txt:'O Fogo produz cinzas que fertilizam a Terra.' },
+      metal: { gives:'water', receives:'earth',
+               gives_txt:'O Metal condensa Água — o orvalho nasce no metal frio.',
+               recv_txt:'A Terra contém e forma o Metal.' },
+      water: { gives:'wood',  receives:'metal',
+               gives_txt:'A Água nutre a Madeira — a raiz bebe do lençol freático.',
+               recv_txt:'O Metal condensa e origina a Água.' },
+    },
+    ctrl: {
+      wood:  { gives:'earth', receives:'metal',
+               gives_txt:'A Madeira domina a Terra — as raízes perfuram e controlam o solo.',
+               recv_txt:'O Metal corta a Madeira — o machado regula o crescimento.' },
+      fire:  { gives:'metal', receives:'water',
+               gives_txt:'O Fogo funde o Metal — o calor transforma o sólido.',
+               recv_txt:'A Água apaga o Fogo — o excesso é extinto pela profundidade.' },
+      earth: { gives:'water', receives:'wood',
+               gives_txt:'A Terra absorve a Água — o solo contém a inundação.',
+               recv_txt:'A Madeira finca raízes na Terra — o crescimento a controla.' },
+      metal: { gives:'wood',  receives:'fire',
+               gives_txt:'O Metal corta a Madeira — a lâmina dá forma ao que cresce.',
+               recv_txt:'O Fogo funde o Metal — o calor transforma a rigidez.' },
+      water: { gives:'fire',  receives:'earth',
+               gives_txt:'A Água apaga o Fogo — a profundidade controla o excesso de calor.',
+               recv_txt:'A Terra absorve a Água — o solo regula o fluxo.' },
+    },
+  };
+
+  let activeCycle = 'gen';
+  let activeElem  = null;
+
+  const nodes   = document.querySelectorAll('.wxd-node');
+  const arrows  = document.querySelectorAll('.wxd-arrow');
+  const genLayer  = document.getElementById('gen-layer');
+  const ctrlLayer = document.getElementById('ctrl-layer');
+  const infoBox   = document.getElementById('wxd-info');
+  const tabs      = document.querySelectorAll('.wxd-tab');
+
+  // ── Trocar ciclo ───────────────────────────────────────
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      activeCycle = tab.dataset.cycle;
+      tabs.forEach(t => {
+        t.classList.toggle('wxd-tab--active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      if (activeCycle === 'gen') {
+        genLayer.style.opacity  = '1';
+        genLayer.style.pointerEvents = 'auto';
+        ctrlLayer.style.opacity = '0';
+        ctrlLayer.style.pointerEvents = 'none';
+      } else {
+        ctrlLayer.style.opacity = '1';
+        ctrlLayer.style.pointerEvents = 'auto';
+        genLayer.style.opacity  = '0';
+        genLayer.style.pointerEvents = 'none';
+      }
+      // re-highlight se havia elemento ativo
+      if (activeElem) highlight(activeElem);
+    });
+  });
+
+  // ── Highlight de elemento ──────────────────────────────
+  function highlight(elem) {
+    activeElem = elem;
+    const rel = RELS[activeCycle][elem];
+
+    // nós
+    nodes.forEach(n => {
+      const e = n.dataset.elem;
+      n.classList.remove('active','dimmed');
+      if (e === elem || e === rel.gives || e === rel.receives) {
+        n.classList.add('active');
+      } else {
+        n.classList.add('dimmed');
+      }
+    });
+
+    // setas — mostra só as do ciclo ativo, destaca as do elemento
+    const layer = activeCycle === 'gen' ? genLayer : ctrlLayer;
+    layer.querySelectorAll('.wxd-arrow').forEach(a => {
+      a.classList.remove('active-arrow','dimmed-arrow');
+      if (a.dataset.from === elem || a.dataset.to === elem) {
+        a.classList.add('active-arrow');
+      } else {
+        a.classList.add('dimmed-arrow');
+      }
+    });
+
+    // info box
+    const d = DATA[elem];
+    const givesD = DATA[rel.gives];
+    const recvD  = DATA[rel.receives];
+    const verb   = activeCycle === 'gen' ? 'gera' : 'controla';
+    const verbR  = activeCycle === 'gen' ? 'gerado por' : 'controlado por';
+
+    infoBox.innerHTML = `
+      <div class="wxd-info-content visible">
+        <span class="wxd-info-glyph" style="color:${d.color}" aria-hidden="true">${d.hanzi}</span>
+        <div>
+          <span class="wxd-info-name" style="color:${d.color}">${d.name}</span>
+          <span class="wxd-info-rel">
+            <strong style="color:${givesD.color}">${givesD.name}</strong> —
+            ${activeCycle === 'gen' ? rel.gives_txt : rel.gives_txt}
+            <br>
+            <strong style="color:${recvD.color}">${recvD.name}</strong> —
+            ${rel.recv_txt}
+          </span>
+        </div>
+      </div>`;
+  }
+
+  function resetHighlight() {
+    activeElem = null;
+    nodes.forEach(n => n.classList.remove('active','dimmed'));
+    arrows.forEach(a => a.classList.remove('active-arrow','dimmed-arrow'));
+    infoBox.innerHTML = '<span class="wxd-info-hint">Clique em um elemento para explorar suas relações</span>';
+  }
+
+  // ── Eventos dos nós ────────────────────────────────────
+  nodes.forEach(node => {
+    const activate = () => {
+      if (activeElem === node.dataset.elem) { resetHighlight(); return; }
+      highlight(node.dataset.elem);
+    };
+    node.addEventListener('click', activate);
+    node.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+      if (e.key === 'Escape') resetHighlight();
+    });
+  });
 </script>
 </body>
 </html>

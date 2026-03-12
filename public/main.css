@@ -101,9 +101,9 @@ body{font-family:var(--fd2);font-size:1rem;color:var(--ip);background:var(--sp);
 /* ── CONCEITOS-CHAVE ────────────────────────────────── */
 .concepts{margin:var(--s5) 0}
 .concepts-title{font-family:var(--fm2);font-size:.563rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gl);margin-bottom:var(--s3)} /* FIX-001: --gl passa WCAG 4.5:1 em ambos os temas */
-.concept-item{display:flex;align-items:baseline;gap:var(--s2);padding:var(--s2) 0;border-bottom:1px solid color-mix(in srgb,var(--gb) 40%,transparent)}
+.concept-item{display:flex;align-items:center;gap:var(--s2);padding:var(--s2) 0;border-bottom:1px solid color-mix(in srgb,var(--gb) 40%,transparent)}
 .concept-item:last-child{border-bottom:none}
-.concept-hanzi{font-family:var(--fc);font-size:1.5rem;color:var(--ip);min-width:44px;font-style:normal}
+.concept-hanzi{font-family:var(--fc);font-size:1.5rem;color:var(--ip);min-width:44px;font-style:normal;writing-mode:vertical-rl;text-orientation:mixed;line-height:1;align-self:center}
 .concept-text{font-family:var(--fd2);font-size:.875rem;color:var(--is);line-height:1.6}
 .concept-text strong{color:var(--ip);font-weight:600}
 
@@ -187,3 +187,26 @@ body{font-family:var(--fd2);font-size:1rem;color:var(--ip);background:var(--sp);
 @font-face{font-family:'JetBrains Mono';font-display:swap}
 @font-face{font-family:'Noto Serif SC';font-display:swap}
 
+
+/* ── MAPA BAZI — 4 PILARES ── */
+.bazi-map{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin:var(--s5) 0}
+.bazi-pillar{background:var(--sc);border:1px solid rgba(255,255,255,.10);border-radius:var(--rl);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:border-color .18s}
+.bazi-pillar:hover{border-color:var(--gold)}
+.bazi-pillar.is-day-master{border-color:var(--gold)}
+.bazi-pillar__header{width:100%;padding:5px var(--s2);text-align:center;font-family:var(--fd2);font-size:.563rem;color:var(--id);letter-spacing:.12em;text-transform:uppercase}
+.bazi-pillar.is-day-master .bazi-pillar__header{color:var(--gold)}
+.bazi-pillar__stem,.bazi-pillar__branch{flex:1;padding:var(--s2) var(--s1);text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.bazi-pillar__char{font-family:var(--fc);font-size:2.5rem;line-height:1;display:block;text-align:center}
+.bazi-pillar__label{font-family:var(--fd2);font-size:.688rem;color:rgba(255,255,255,.72);display:block}
+.bazi-pillar__badge{font-family:var(--fd2);font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:3px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.66)}
+.bazi-pillar__hidden-stems{width:100%;margin-top:var(--s1);padding-top:var(--s1);border-top:1px dashed var(--gb);display:flex;flex-wrap:wrap;justify-content:center;gap:3px}
+.bazi-pillar__hidden-stem{font-family:var(--fc);font-size:.563rem;display:inline-flex;align-items:center;height:20px;padding:0 6px;border-radius:3px;line-height:20px}
+@media(max-width:600px){.bazi-map{grid-template-columns:repeat(2,1fr)}}
+
+/* ── CICLO JIAZI — GRID 6×10 ── */
+.jiazi-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:var(--s1);margin:var(--s4) 0}
+.jiazi-pill{background:var(--sc);border:1px solid var(--gb);border-radius:var(--r);padding:var(--s1);text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.jiazi-pill.jiazi-current{border-color:var(--gold);background:color-mix(in srgb,var(--gs) 60%,transparent)}
+.jiazi-num{font-family:var(--fd2);font-size:.45rem;color:var(--id);letter-spacing:.06em}
+.jiazi-hanzi{font-family:var(--fc);font-size:.875rem;line-height:1.2}
+@media(max-width:600px){.jiazi-grid{grid-template-columns:repeat(6,1fr)}}
