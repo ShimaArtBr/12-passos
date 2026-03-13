@@ -18,9 +18,7 @@
 .trunk-card{cursor:pointer;height:120px;border-radius:var(--rl);border:1px solid var(--gb);background:var(--sc);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--s2);text-align:center;transition:all .2s;user-select:none;position:relative}
 .trunk-card:hover{border-color:var(--gold);box-shadow:0 4px 12px rgba(192,154,74,.15)}
 .trunk-card:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(192,154,74,.2)}
-.trunk-card::before{content:attr(data-pol);font-family:var(--fm2);font-size:.45rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;position:absolute;top:6px;right:6px;padding:1px 5px;border-radius:3px}
-.trunk-card[data-pol="Yang"]::before{background:color-mix(in srgb,var(--fd) 15%,transparent);color:var(--fd)}
-.trunk-card[data-pol="Yin"]::before{background:color-mix(in srgb,var(--wd) 15%,transparent);color:var(--wd)}
+
 @media(max-width:768px){.trunk-grid{grid-template-columns:repeat(3,1fr)}.trunk-card{height:100px}}
 .trunk-hanzi{font-family:var(--fc);font-size:2rem;color:var(--ip);font-style:normal;line-height:1;margin-bottom:4px}
 .trunk-pinyin{font-family:var(--ff);font-size:.75rem;font-style:italic;color:var(--gold);display:block}
