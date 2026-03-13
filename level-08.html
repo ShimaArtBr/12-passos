@@ -10,17 +10,45 @@
 <meta name="tempo_leitura" content="5 min">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/public/main.css">
 <style>
-/* Grid dos 60 pares */
-.jiazi-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:var(--s1);margin:var(--s4) 0}
-.jiazi-pill{background:var(--sc);border:1px solid var(--gb);border-radius:var(--r);padding:6px 4px;text-align:center;transition:border-color .2s}
-.jiazi-pill:hover{border-color:var(--gold)}
-.jiazi-current{border-color:var(--gold);background:var(--gs)}
-.jiazi-num{font-family:var(--fm2);font-size:.45rem;color:var(--id);display:block;letter-spacing:.04em}
-.jiazi-hanzi{font-family:var(--fc);font-size:.9rem;display:block;line-height:1.3}
-@media(max-width:600px){.jiazi-grid{grid-template-columns:repeat(6,1fr)}}
+/* Grid dos 60 pares — cards com flip */
+.jiazi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:var(--s4) 0}
+@media(max-width:600px){.jiazi-grid{grid-template-columns:repeat(4,1fr)}}
+
+.jz-scene{perspective:600px;}
+.jz-card{
+  position:relative;width:100%;aspect-ratio:1/1.55;
+  cursor:pointer;transform-style:preserve-3d;
+  transition:transform .5s cubic-bezier(.4,0,.2,1);
+}
+.jz-card.flipped{transform:rotateY(180deg)}
+.jz-face{
+  position:absolute;inset:0;border-radius:var(--r);
+  display:flex;flex-direction:column;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border:1px solid var(--gb);overflow:hidden;
+}
+.jz-front{background:var(--sc)}
+.jz-back{background:var(--si);transform:rotateY(180deg)}
+.jz-card.is-current .jz-face{border-color:var(--gold)}
+.jz-scene:hover .jz-face{border-color:var(--gold)}
+
+.jz-top,.jz-bot{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
+.jz-sep{flex:0 0 auto;display:flex;align-items:center;gap:5px;padding:0 10%}
+.jz-line{flex:1;height:1px;background:rgba(255,255,255,.12)}
+.jz-num{font-family:var(--fm2);font-size:.75rem;color:var(--id);letter-spacing:.06em;line-height:1}
+.jz-pinyin{font-family:var(--fd2);font-size:.75rem;font-weight:300;letter-spacing:.04em;line-height:1;opacity:.85}
+.jz-h{font-family:var(--fc);font-size:1.777rem;line-height:1;font-weight:400}
+.jz-pt-main{font-family:var(--fd2);font-size:.75rem;font-weight:600;letter-spacing:.05em;text-align:center;line-height:1.3;text-transform:uppercase;min-height:1.777rem;display:flex;align-items:center;justify-content:center}
+.jz-pt-sub{font-family:var(--fd2);font-size:.75rem;font-weight:300;letter-spacing:.04em;text-align:center;line-height:1}
+
+.c-woodY{color:#50C880}.c-woodN{color:#0E6038}
+.c-fireY{color:#F05060}.c-fireN{color:#A81820}
+.c-earthY{color:#E8B020}.c-earthN{color:#A07808}
+.c-metalY{color:#C8C8C8}.c-metalN{color:#848484}
+.c-waterY{color:#7AA0E0}.c-waterN{color:#3060C0}
 
 /* anos destaque */
 .year-row{display:flex;align-items:center;gap:var(--s2);padding:var(--s2) 0;border-bottom:1px solid color-mix(in srgb,var(--gb) 40%,transparent)}
@@ -74,250 +102,93 @@
   <div class="dv" aria-hidden="true"><span class="dvs">·</span></div>
 
   <h3>Os 60 Pares do Ciclo</h3>
-  <p style="font-family:var(--fm2);font-size:.625rem;color:var(--id);letter-spacing:.06em;margin-bottom:0">Combinações Yang+Yang e Yin+Yin · paridade estrita</p>
+  <p style="font-family:var(--fm2);font-size:.625rem;color:var(--id);letter-spacing:.06em;margin-bottom:0">Combinações Yang+Yang e Yin+Yin · toque para revelar a tradução</p>
 
-    <div class="jiazi-grid" role="list" aria-label="Os 60 pares do ciclo Jiǎzǐ">
-    <div class="jiazi-pill" role="listitem" aria-label="01 — JiǎZǐ: Madeira Yang + Rato">
-      <span class="jiazi-num">01</span>
-      <span class="jiazi-hanzi" style="color:var(--od)">甲子</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="02 — YǐChǒu: Madeira Yin + Boi">
-      <span class="jiazi-num">02</span>
-      <span class="jiazi-hanzi" style="color:var(--om)">乙丑</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="03 — BǐngYín: Fogo Yang + Tigre">
-      <span class="jiazi-num">03</span>
-      <span class="jiazi-hanzi" style="color:var(--fd)">丙寅</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="04 — DīngMǎo: Fogo Yin + Coelho">
-      <span class="jiazi-num">04</span>
-      <span class="jiazi-hanzi" style="color:var(--fm)">丁卯</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="05 — WùChén: Terra Yang + Dragão">
-      <span class="jiazi-num">05</span>
-      <span class="jiazi-hanzi" style="color:var(--ed)">戊辰</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="06 — JǐSì: Terra Yin + Serpente">
-      <span class="jiazi-num">06</span>
-      <span class="jiazi-hanzi" style="color:var(--em)">己巳</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="07 — GēngWǔ: Metal Yang + Cavalo">
-      <span class="jiazi-num">07</span>
-      <span class="jiazi-hanzi" style="color:var(--md)">庚午</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="08 — XīnWèi: Metal Yin + Cabra">
-      <span class="jiazi-num">08</span>
-      <span class="jiazi-hanzi" style="color:var(--mm)">辛未</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="09 — RénShēn: Água Yang + Macaco">
-      <span class="jiazi-num">09</span>
-      <span class="jiazi-hanzi" style="color:var(--wd)">壬申</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="10 — GuǐYǒu: Água Yin + Galo">
-      <span class="jiazi-num">10</span>
-      <span class="jiazi-hanzi" style="color:var(--wm)">癸酉</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="11 — JiǎXū: Madeira Yang + Cão">
-      <span class="jiazi-num">11</span>
-      <span class="jiazi-hanzi" style="color:var(--od)">甲戌</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="12 — YǐHài: Madeira Yin + Porco">
-      <span class="jiazi-num">12</span>
-      <span class="jiazi-hanzi" style="color:var(--om)">乙亥</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="13 — BǐngZǐ: Fogo Yang + Rato">
-      <span class="jiazi-num">13</span>
-      <span class="jiazi-hanzi" style="color:var(--fd)">丙子</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="14 — DīngChǒu: Fogo Yin + Boi">
-      <span class="jiazi-num">14</span>
-      <span class="jiazi-hanzi" style="color:var(--fm)">丁丑</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="15 — WùYín: Terra Yang + Tigre">
-      <span class="jiazi-num">15</span>
-      <span class="jiazi-hanzi" style="color:var(--ed)">戊寅</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="16 — JǐMǎo: Terra Yin + Coelho">
-      <span class="jiazi-num">16</span>
-      <span class="jiazi-hanzi" style="color:var(--em)">己卯</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="17 — GēngChén: Metal Yang + Dragão">
-      <span class="jiazi-num">17</span>
-      <span class="jiazi-hanzi" style="color:var(--md)">庚辰</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="18 — XīnSì: Metal Yin + Serpente">
-      <span class="jiazi-num">18</span>
-      <span class="jiazi-hanzi" style="color:var(--mm)">辛巳</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="19 — RénWǔ: Água Yang + Cavalo">
-      <span class="jiazi-num">19</span>
-      <span class="jiazi-hanzi" style="color:var(--wd)">壬午</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="20 — GuǐWèi: Água Yin + Cabra">
-      <span class="jiazi-num">20</span>
-      <span class="jiazi-hanzi" style="color:var(--wm)">癸未</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="21 — JiǎShēn: Madeira Yang + Macaco">
-      <span class="jiazi-num">21</span>
-      <span class="jiazi-hanzi" style="color:var(--od)">甲申</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="22 — YǐYǒu: Madeira Yin + Galo">
-      <span class="jiazi-num">22</span>
-      <span class="jiazi-hanzi" style="color:var(--om)">乙酉</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="23 — BǐngXū: Fogo Yang + Cão">
-      <span class="jiazi-num">23</span>
-      <span class="jiazi-hanzi" style="color:var(--fd)">丙戌</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="24 — DīngHài: Fogo Yin + Porco">
-      <span class="jiazi-num">24</span>
-      <span class="jiazi-hanzi" style="color:var(--fm)">丁亥</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="25 — WùZǐ: Terra Yang + Rato">
-      <span class="jiazi-num">25</span>
-      <span class="jiazi-hanzi" style="color:var(--ed)">戊子</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="26 — JǐChǒu: Terra Yin + Boi">
-      <span class="jiazi-num">26</span>
-      <span class="jiazi-hanzi" style="color:var(--em)">己丑</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="27 — GēngYín: Metal Yang + Tigre">
-      <span class="jiazi-num">27</span>
-      <span class="jiazi-hanzi" style="color:var(--md)">庚寅</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="28 — XīnMǎo: Metal Yin + Coelho">
-      <span class="jiazi-num">28</span>
-      <span class="jiazi-hanzi" style="color:var(--mm)">辛卯</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="29 — RénChén: Água Yang + Dragão">
-      <span class="jiazi-num">29</span>
-      <span class="jiazi-hanzi" style="color:var(--wd)">壬辰</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="30 — GuǐSì: Água Yin + Serpente">
-      <span class="jiazi-num">30</span>
-      <span class="jiazi-hanzi" style="color:var(--wm)">癸巳</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="31 — JiǎWǔ: Madeira Yang + Cavalo">
-      <span class="jiazi-num">31</span>
-      <span class="jiazi-hanzi" style="color:var(--od)">甲午</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="32 — YǐWèi: Madeira Yin + Cabra">
-      <span class="jiazi-num">32</span>
-      <span class="jiazi-hanzi" style="color:var(--om)">乙未</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="33 — BǐngShēn: Fogo Yang + Macaco">
-      <span class="jiazi-num">33</span>
-      <span class="jiazi-hanzi" style="color:var(--fd)">丙申</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="34 — DīngYǒu: Fogo Yin + Galo">
-      <span class="jiazi-num">34</span>
-      <span class="jiazi-hanzi" style="color:var(--fm)">丁酉</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="35 — WùXū: Terra Yang + Cão">
-      <span class="jiazi-num">35</span>
-      <span class="jiazi-hanzi" style="color:var(--ed)">戊戌</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="36 — JǐHài: Terra Yin + Porco">
-      <span class="jiazi-num">36</span>
-      <span class="jiazi-hanzi" style="color:var(--em)">己亥</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="37 — GēngZǐ: Metal Yang + Rato">
-      <span class="jiazi-num">37</span>
-      <span class="jiazi-hanzi" style="color:var(--md)">庚子</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="38 — XīnChǒu: Metal Yin + Boi">
-      <span class="jiazi-num">38</span>
-      <span class="jiazi-hanzi" style="color:var(--mm)">辛丑</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="39 — RénYín: Água Yang + Tigre">
-      <span class="jiazi-num">39</span>
-      <span class="jiazi-hanzi" style="color:var(--wd)">壬寅</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="40 — GuǐMǎo: Água Yin + Coelho">
-      <span class="jiazi-num">40</span>
-      <span class="jiazi-hanzi" style="color:var(--wm)">癸卯</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="41 — JiǎChén: Madeira Yang + Dragão">
-      <span class="jiazi-num">41</span>
-      <span class="jiazi-hanzi" style="color:var(--od)">甲辰</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="42 — YǐSì: Madeira Yin + Serpente">
-      <span class="jiazi-num">42</span>
-      <span class="jiazi-hanzi" style="color:var(--om)">乙巳</span>
-    </div>
-    <div class="jiazi-pill jiazi-current" role="listitem" aria-label="43 — BǐngWǔ: Fogo Yang + Cavalo">
-      <span class="jiazi-num">43</span>
-      <span class="jiazi-hanzi" style="color:var(--fd)">丙午</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="44 — DīngWèi: Fogo Yin + Cabra">
-      <span class="jiazi-num">44</span>
-      <span class="jiazi-hanzi" style="color:var(--fm)">丁未</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="45 — WùShēn: Terra Yang + Macaco">
-      <span class="jiazi-num">45</span>
-      <span class="jiazi-hanzi" style="color:var(--ed)">戊申</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="46 — JǐYǒu: Terra Yin + Galo">
-      <span class="jiazi-num">46</span>
-      <span class="jiazi-hanzi" style="color:var(--em)">己酉</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="47 — GēngXū: Metal Yang + Cão">
-      <span class="jiazi-num">47</span>
-      <span class="jiazi-hanzi" style="color:var(--md)">庚戌</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="48 — XīnHài: Metal Yin + Porco">
-      <span class="jiazi-num">48</span>
-      <span class="jiazi-hanzi" style="color:var(--mm)">辛亥</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="49 — RénZǐ: Água Yang + Rato">
-      <span class="jiazi-num">49</span>
-      <span class="jiazi-hanzi" style="color:var(--wd)">壬子</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="50 — GuǐChǒu: Água Yin + Boi">
-      <span class="jiazi-num">50</span>
-      <span class="jiazi-hanzi" style="color:var(--wm)">癸丑</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="51 — JiǎYín: Madeira Yang + Tigre">
-      <span class="jiazi-num">51</span>
-      <span class="jiazi-hanzi" style="color:var(--od)">甲寅</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="52 — YǐMǎo: Madeira Yin + Coelho">
-      <span class="jiazi-num">52</span>
-      <span class="jiazi-hanzi" style="color:var(--om)">乙卯</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="53 — BǐngChén: Fogo Yang + Dragão">
-      <span class="jiazi-num">53</span>
-      <span class="jiazi-hanzi" style="color:var(--fd)">丙辰</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="54 — DīngSì: Fogo Yin + Serpente">
-      <span class="jiazi-num">54</span>
-      <span class="jiazi-hanzi" style="color:var(--fm)">丁巳</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="55 — WùWǔ: Terra Yang + Cavalo">
-      <span class="jiazi-num">55</span>
-      <span class="jiazi-hanzi" style="color:var(--ed)">戊午</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="56 — JǐWèi: Terra Yin + Cabra">
-      <span class="jiazi-num">56</span>
-      <span class="jiazi-hanzi" style="color:var(--em)">己未</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="57 — GēngShēn: Metal Yang + Macaco">
-      <span class="jiazi-num">57</span>
-      <span class="jiazi-hanzi" style="color:var(--md)">庚申</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="58 — XīnYǒu: Metal Yin + Galo">
-      <span class="jiazi-num">58</span>
-      <span class="jiazi-hanzi" style="color:var(--mm)">辛酉</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="59 — RénXū: Água Yang + Cão">
-      <span class="jiazi-num">59</span>
-      <span class="jiazi-hanzi" style="color:var(--wd)">壬戌</span>
-    </div>
-    <div class="jiazi-pill" role="listitem" aria-label="60 — GuǐHài: Água Yin + Porco">
-      <span class="jiazi-num">60</span>
-      <span class="jiazi-hanzi" style="color:var(--wm)">癸亥</span>
-    </div>
-  </div>
+  <div class="jiazi-grid" id="jiazi-grid" role="list" aria-label="Os 60 pares do ciclo Jiǎzǐ"></div>
+
+  <script>
+  (function(){
+    const STEMS=[
+      {h:'甲',py:'Jiǎ', yang:true, e:'wood', pt:'Madeira Yang'},
+      {h:'乙',py:'Yǐ',  yang:false,e:'wood', pt:'Madeira Yin'},
+      {h:'丙',py:'Bǐng',yang:true, e:'fire', pt:'Fogo Yang'},
+      {h:'丁',py:'Dīng',yang:false,e:'fire', pt:'Fogo Yin'},
+      {h:'戊',py:'Wù',  yang:true, e:'earth',pt:'Terra Yang'},
+      {h:'己',py:'Jǐ',  yang:false,e:'earth',pt:'Terra Yin'},
+      {h:'庚',py:'Gēng',yang:true, e:'metal',pt:'Metal Yang'},
+      {h:'辛',py:'Xīn', yang:false,e:'metal',pt:'Metal Yin'},
+      {h:'壬',py:'Rén', yang:true, e:'water',pt:'Água Yang'},
+      {h:'癸',py:'Guǐ', yang:false,e:'water',pt:'Água Yin'},
+    ];
+    const BRANCHES=[
+      {h:'子',a:'鼠',apyBr:'Shǔ', ptA:'Rato',    yang:true, e:'water',energy:'Água Yang'},
+      {h:'丑',a:'牛',apyBr:'Niú', ptA:'Boi',     yang:false,e:'earth',energy:'Terra Yin'},
+      {h:'寅',a:'虎',apyBr:'Hǔ',  ptA:'Tigre',   yang:true, e:'wood', energy:'Madeira Yang'},
+      {h:'卯',a:'兔',apyBr:'Tù',  ptA:'Coelho',  yang:false,e:'wood', energy:'Madeira Yin'},
+      {h:'辰',a:'龍',apyBr:'Lóng',ptA:'Dragão',  yang:true, e:'earth',energy:'Terra Yang'},
+      {h:'巳',a:'蛇',apyBr:'Shé', ptA:'Serpente',yang:false,e:'fire', energy:'Fogo Yin'},
+      {h:'午',a:'馬',apyBr:'Mǎ',  ptA:'Cavalo',  yang:true, e:'fire', energy:'Fogo Yang'},
+      {h:'未',a:'羊',apyBr:'Yáng',ptA:'Cabra',   yang:false,e:'earth',energy:'Terra Yin'},
+      {h:'申',a:'猴',apyBr:'Hóu', ptA:'Macaco',  yang:true, e:'metal',energy:'Metal Yang'},
+      {h:'酉',a:'雞',apyBr:'Jī',  ptA:'Galo',    yang:false,e:'metal',energy:'Metal Yin'},
+      {h:'戌',a:'犬',apyBr:'Quǎn',ptA:'Cão',     yang:true, e:'earth',energy:'Terra Yang'},
+      {h:'亥',a:'豬',apyBr:'Zhū', ptA:'Porco',   yang:false,e:'water',energy:'Água Yin'},
+    ];
+    const CURRENT=42;
+    const grid=document.getElementById('jiazi-grid');
+    const cls=(yang,e)=>'c-'+e+(yang?'Y':'N');
+
+    for(let i=0;i<60;i++){
+      const s=STEMS[i%10], b=BRANCHES[i%12];
+      const num=String(i+1).padStart(2,'0');
+      const sc=cls(s.yang,s.e);
+      const bc=cls(b.yang,b.e);
+
+      const scene=document.createElement('div');
+      scene.className='jz-scene';
+      scene.setAttribute('role','listitem');
+
+      const card=document.createElement('div');
+      card.className='jz-card'+(i===CURRENT?' is-current':'');
+      card.setAttribute('aria-label',`Par ${num}: ${s.pt} + ${b.ptA}`);
+      card.onclick=()=>card.classList.toggle('flipped');
+
+      card.innerHTML=`
+        <div class="jz-face jz-front">
+          <div class="jz-top">
+            <span class="jz-pinyin ${sc}">${s.py}</span>
+            <span class="jz-h ${sc}">${s.h}</span>
+          </div>
+          <div class="jz-sep">
+            <div class="jz-line"></div>
+            <span class="jz-num">${num}</span>
+            <div class="jz-line"></div>
+          </div>
+          <div class="jz-bot">
+            <span class="jz-h ${sc}">${b.a}</span>
+            <span class="jz-pinyin ${sc}">${b.apyBr}</span>
+          </div>
+        </div>
+        <div class="jz-face jz-back">
+          <div class="jz-top">
+            <span class="jz-pt-main ${sc}">${s.pt}</span>
+          </div>
+          <div class="jz-sep">
+            <div class="jz-line"></div>
+            <span class="jz-num">${num}</span>
+            <div class="jz-line"></div>
+          </div>
+          <div class="jz-bot">
+            <span class="jz-pt-main ${bc}">${b.ptA}</span>
+            <span class="jz-pt-sub ${bc}">${b.energy}</span>
+          </div>
+        </div>`;
+
+      scene.appendChild(card);
+      grid.appendChild(scene);
+    }
+  })();
+  </script>
 
 
   <div class="dv" aria-hidden="true"><span class="dvs">·</span></div>
