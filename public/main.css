@@ -1335,3 +1335,22 @@ details summary::-webkit-details-marker { display: none; }
   text-decoration: none;
 }
 .btn-ds:hover { border-color: var(--gold); background: var(--gs); text-decoration: none; color: var(--gold); }
+
+/* ═══════════════════════════════════════════════════════════════
+   34. GLYPH ENTER ANIMATION
+   ═══════════════════════════════════════════════════════════════ */
+
+[data-glyph]::before {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+}
+
+[data-glyph].glyph-visible::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-glyph]::before { transition: none; }
+}

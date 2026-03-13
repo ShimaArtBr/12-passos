@@ -34,4 +34,18 @@ export function initNav({ current = 0, total = 12 } = {}) {
   // ── Atualiza ícone do toggle conforme tema salvo ────
   const icon = document.getElementById('theme-icon');
   if (icon) icon.textContent = saved === 'dark' ? '☀️' : '🌙';
+
+  // ── Animação de entrada dos glifos (::before dos cards) ──
+  const glyphTargets = document.querySelectorAll('[data-glyph]');
+  if (glyphTargets.length && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('glyph-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    glyphTargets.forEach(el => obs.observe(el));
+  }
 }
