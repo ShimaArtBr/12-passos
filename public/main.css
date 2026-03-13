@@ -1289,3 +1289,49 @@ details summary::-webkit-details-marker { display: none; }
     transition-duration: .01ms !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   32. NAV BRAND — círculo (alinha com bazipt topbar)
+   ═══════════════════════════════════════════════════════════════ */
+
+.nsym {
+  width: 32px; height: 32px;
+  border: 1.5px solid var(--gold); border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: .9rem; font-family: var(--fc);
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.nb {
+  font-family: var(--ff);
+  font-size: 1.05rem;
+  color: var(--gold);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  gap: 10px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   33. BTN DS v2.5 (para link cross-site)
+   ═══════════════════════════════════════════════════════════════ */
+
+.btn-ds {
+  font-family: var(--fd2);
+  font-weight: 600;
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border-radius: var(--r);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all .2s var(--ease);
+  padding: 8px 20px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gb);
+  text-decoration: none;
+}
+.btn-ds:hover { border-color: var(--gold); background: var(--gs); text-decoration: none; color: var(--gold); }
