@@ -1,6 +1,20 @@
 /* ═══════════════════════════════════════════════════════
-   BAZILAR Didático · Style Sheet
-   DS v2.5 tokens + extensões didáticas
+   BAZILAR Didático · Style Sheet · DS v2.6
+   ───────────────────────────────────────────────────────
+   Changelog v2.6:
+   · Escala CJK alinhada à razão 1.333 (quarta perfeita)
+     .tcjkxl 3.157rem  Wu Xing decorativo
+     .tcjk   2.369rem  troncos / glifos principais
+     .tcjkm  1.777rem  hanzi display (flip cards, h2 decorativo)
+     .tcjkl  1.333rem  hanzi em tabelas e listas
+     .tcjks  1.000rem  ramos secundários, labels (antes 1.125)
+   · .nsym 1.4→1.5rem (alinhado ao DS)
+   · .fs 1.8→2rem (alinhado ao DS)
+   · .ft / .nav-progress / .level-nav-center .625→.75rem
+   · .bazi-pillar__char migrado para .tcjk (2.369rem)
+   · Nomenclatura .bazi-pillar__* consolidada
+   · Componentes formalizados: .trail-* · .etym
+     .concept-* · .jz-* · .level-nav · .bazi-pillar__*
    ═══════════════════════════════════════════════════════ */
 
 /* ── TOKENS DS v2.5 ─────────────────────────────────── */
@@ -13,10 +27,10 @@
   --fd:#8C0A12;--fm:#D3232E;--fl:#F5BBBF;
   --ed:#7A4C08;--em:#B87C14;--el2:#F0E0A0;
   --md:#383838;--mm:#848484;--ml:#E0E0E0;
-  --ff:'Lora','Noto Serif SC',serif;
+  --ff:'Lora','Noto Serif TC',serif;
   --fd2:'Noto Sans',system-ui,sans-serif;
   --fm2:'JetBrains Mono',monospace;
-  --fc:'Noto Serif SC',serif;
+  --fc:'Noto Serif TC',serif;
   --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:40px;--s6:48px;--s8:64px;--s10:80px;
   --r:8px;--rl:16px;--rp:999px;
   --sh:0 1px 3px rgba(30,27,21,.07);--shm:0 4px 18px rgba(30,27,21,.09);
@@ -44,7 +58,7 @@ body{font-family:var(--fd2);font-size:1rem;color:var(--ip);background:var(--sp);
 /* ── NAV ────────────────────────────────────────────── */
 .nav{position:fixed;inset:0 0 auto 0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:54px;background:color-mix(in srgb,var(--sp) 82%,transparent);backdrop-filter:blur(20px);border-bottom:1px solid var(--gb)}
 .nb{display:flex;align-items:center;gap:12px;font-family:var(--fd2);font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ip);text-decoration:none}
-.nsym{font-family:var(--fc);font-size:1.4rem;color:var(--gold);line-height:1;font-style:normal}
+.nsym{font-family:var(--fc);font-size:1.5rem;color:var(--gold);line-height:1;font-style:normal}
 .nr{display:flex;align-items:center;gap:16px}
 .nl{font-family:var(--fd2);font-size:.75rem;font-weight:400;color:var(--im);text-decoration:none;letter-spacing:.04em;transition:color .2s}
 .nl:hover{color:var(--gold)}
@@ -52,7 +66,7 @@ body{font-family:var(--fd2);font-size:1rem;color:var(--ip);background:var(--sp);
 .tb:hover{background:var(--gb)}
 
 /* progresso de nível na nav */
-.nav-progress{font-family:var(--fm2);font-size:.625rem;color:var(--im);letter-spacing:.08em;white-space:nowrap}
+.nav-progress{font-family:var(--fm2);font-size:.75rem;color:var(--im);letter-spacing:.08em;white-space:nowrap}
 .nav-progress span{color:var(--gold)}
 
 /* ── PROGRESS BAR DE SCROLL ─────────────────────────── */
@@ -94,16 +108,16 @@ body{font-family:var(--fd2);font-size:1rem;color:var(--ip);background:var(--sp);
 .etym table{width:100%;border-collapse:collapse;font-family:var(--fd2);font-size:.875rem}
 .etym th{font-family:var(--fm2);font-size:.563rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--id);padding:var(--s1) var(--s2);text-align:left;border-bottom:1px solid var(--gb)}
 .etym td{padding:var(--s2);border-bottom:1px solid color-mix(in srgb,var(--gb) 50%,transparent);color:var(--is);line-height:1.5;vertical-align:top}
-.etym td:first-child{font-family:var(--fc);font-size:1.5rem;color:var(--ip);font-style:normal;width:60px}
+.etym td:first-child{font-family:var(--fc);font-size:1.333rem;color:var(--ip);font-style:normal;width:60px} /* .tcjkl */
 .etym td:nth-child(2){font-family:var(--fm2);font-size:.875rem;color:var(--gold);width:80px}
 .etym tr:last-child td{border-bottom:none}
 
 /* ── CONCEITOS-CHAVE ────────────────────────────────── */
 .concepts{margin:var(--s5) 0}
-.concepts-title{font-family:var(--fm2);font-size:.563rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gl);margin-bottom:var(--s3)} /* FIX-001: --gl passa WCAG 4.5:1 em ambos os temas */
+.concepts-title{font-family:var(--fm2);font-size:.563rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gl);margin-bottom:var(--s3)} /* FIX-001 */
 .concept-item{display:flex;align-items:center;gap:var(--s2);padding:var(--s2) 0;border-bottom:1px solid color-mix(in srgb,var(--gb) 40%,transparent)}
 .concept-item:last-child{border-bottom:none}
-.concept-hanzi{font-family:var(--fc);font-size:1.5rem;color:var(--ip);min-width:44px;font-style:normal;writing-mode:vertical-rl;text-orientation:mixed;line-height:1;align-self:center}
+.concept-hanzi{font-family:var(--fc);font-size:1.333rem;color:var(--ip);min-width:44px;font-style:normal;writing-mode:vertical-rl;text-orientation:mixed;line-height:1;align-self:center} /* .tcjkl */
 .concept-text{font-family:var(--fd2);font-size:.875rem;color:var(--is);line-height:1.6}
 .concept-text strong{color:var(--ip);font-weight:600}
 
@@ -111,6 +125,20 @@ body{font-family:var(--fd2);font-size:1rem;color:var(--ip);background:var(--sp);
 .dv{display:flex;align-items:center;gap:var(--s3);margin:var(--s6) 0}
 .dv::before,.dv::after{content:'';flex:1;height:1px;background:var(--gb)}
 .dvs{font-family:var(--fc);font-size:1.1rem;color:var(--gold);font-style:normal}
+
+/* ── TOKENS CJK · v2.6 ──────────────────────────────
+   Escala razão 1.333 (quarta perfeita), base 1rem:
+   n=+4  3.157rem  .tcjkxl  Wu Xing decorativo
+   n=+3  2.369rem  .tcjk    troncos / glifos principais
+   n=+2  1.777rem  .tcjkm   hanzi display (flip cards)
+   n=+1  1.333rem  .tcjkl   hanzi em tabelas e listas
+   n= 0  1.000rem  .tcjks   ramos secundários, labels
+   ────────────────────────────────────────────────── */
+.tcjkxl{font-family:var(--fc);font-size:3.157rem;font-weight:400;color:var(--ip);letter-spacing:.04em;font-style:normal;line-height:1}
+.tcjk  {font-family:var(--fc);font-size:2.369rem;font-weight:400;color:var(--ip);letter-spacing:.06em;font-style:normal;line-height:1}
+.tcjkm {font-family:var(--fc);font-size:1.777rem;font-weight:400;color:var(--ip);letter-spacing:.06em;font-style:normal;line-height:1}
+.tcjkl {font-family:var(--fc);font-size:1.333rem;font-weight:400;color:var(--ip);letter-spacing:.06em;font-style:normal;line-height:1}
+.tcjks {font-family:var(--fc);font-size:1.000rem;font-weight:400;color:var(--im);letter-spacing:.08em;font-style:normal;line-height:1}
 
 /* ── NAVEGAÇÃO ENTRE NÍVEIS ─────────────────────────── */
 .level-nav{display:flex;justify-content:space-between;align-items:center;padding:var(--s6) var(--s10);border-top:1px solid var(--gb);margin-top:var(--s8)}
@@ -121,12 +149,12 @@ body{font-family:var(--fd2);font-size:1rem;color:var(--ip);background:var(--sp);
 .bs:hover{background:var(--gs);border-color:var(--gold)}
 .btn:disabled,.btn[aria-disabled="true"]{opacity:.3;cursor:not-allowed;pointer-events:none}
 
-.level-nav-center{font-family:var(--fm2);font-size:.625rem;color:var(--id);letter-spacing:.08em;text-align:center}
+.level-nav-center{font-family:var(--fm2);font-size:.75rem;color:var(--id);letter-spacing:.08em;text-align:center}
 
 /* ── FOOTER ─────────────────────────────────────────── */
 .foot{text-align:center;padding:var(--s8) var(--s10);border-top:1px solid var(--gb)}
-.fs{font-family:var(--fc);font-size:1.8rem;color:var(--gold);display:block;margin-bottom:var(--s2);font-style:normal}
-.ft{font-family:var(--fm2);font-size:.625rem;color:var(--id);letter-spacing:.08em}
+.fs{font-family:var(--fc);font-size:2rem;color:var(--gold);display:block;margin-bottom:var(--s2);font-style:normal}
+.ft{font-family:var(--fm2);font-size:.75rem;color:var(--id);letter-spacing:.08em}
 
 /* ── ANIMAÇÕES ──────────────────────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -185,10 +213,10 @@ body{font-family:var(--fd2);font-size:1rem;color:var(--ip);background:var(--sp);
 @font-face{font-family:'Lora';font-display:swap}
 @font-face{font-family:'Noto Sans';font-display:swap}
 @font-face{font-family:'JetBrains Mono';font-display:swap}
-@font-face{font-family:'Noto Serif SC';font-display:swap}
+@font-face{font-family:'Noto Serif TC';font-display:swap}
 
 
-/* ── MAPA BAZI — 4 PILARES ── */
+/* ── MAPA BAZI — 4 PILARES ── (BEM site; DS usa .pil-* — consolidar em v2.7) */
 .bazi-map{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin:var(--s5) 0}
 .bazi-pillar{background:var(--sc);border:1px solid rgba(255,255,255,.10);border-radius:var(--rl);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:border-color .18s}
 .bazi-pillar:hover{border-color:var(--gold)}
@@ -196,7 +224,7 @@ body{font-family:var(--fd2);font-size:1rem;color:var(--ip);background:var(--sp);
 .bazi-pillar__header{width:100%;padding:5px var(--s2);text-align:center;font-family:var(--fd2);font-size:.563rem;color:var(--id);letter-spacing:.12em;text-transform:uppercase}
 .bazi-pillar.is-day-master .bazi-pillar__header{color:var(--gold)}
 .bazi-pillar__stem,.bazi-pillar__branch{flex:1;padding:var(--s2) var(--s1);text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-.bazi-pillar__char{font-family:var(--fc);font-size:2.5rem;line-height:1;display:block;text-align:center}
+.bazi-pillar__char{font-family:var(--fc);font-size:2.369rem;line-height:1;display:block;text-align:center} /* .tcjk */
 .bazi-pillar__label{font-family:var(--fd2);font-size:.688rem;color:rgba(255,255,255,.72);display:block}
 .bazi-pillar__badge{font-family:var(--fd2);font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:3px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.66)}
 .bazi-pillar__hidden-stems{width:100%;margin-top:var(--s1);padding-top:var(--s1);border-top:1px dashed var(--gb);display:flex;flex-wrap:wrap;justify-content:center;gap:3px}
