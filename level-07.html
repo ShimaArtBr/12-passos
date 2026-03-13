@@ -19,7 +19,8 @@
 .branch-card:hover,.branch-card:focus-within{border-color:var(--gold);box-shadow:var(--shm)}
 .branch-hanzi{font-family:var(--fc);font-size:1.8rem;color:var(--ip);display:block;font-style:normal;line-height:1}
 .branch-animal{font-size:1.2rem;display:block;margin:4px 0}
-.branch-pinyin{font-family:var(--ff);font-size:.75rem;font-style:italic;color:var(--gold);display:block}
+.branch-pinyin{font-family:var(--ff);font-size:.75rem;font-style:italic;color:var(--gold);display:inline}
+.branch-name{font-family:var(--fd2);font-size:.75rem;font-weight:300;color:var(--is);display:inline} 
 .branch-elem{font-family:var(--fd2);font-size:.563rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--im);display:block;margin-top:2px}
 /* Troncos Ocultos — revelados no hover via CSS (zero JS) */
 .branch-hidden{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;margin-top:var(--s1);opacity:0;transition:opacity .3s;min-height:24px}
@@ -80,7 +81,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Zǐ — Rato, Yang Água, Tronco Oculto: Rén">
       <span class="branch-hanzi">子</span>
       <span class="branch-animal" aria-hidden="true">🐭</span>
-      <span class="branch-pinyin">Zǐ</span>
+      <span class="branch-pinyin">Zǐ</span> <span class="branch-name">✦ Rato</span>
       <span class="branch-elem" style="color:var(--wm)">Yang Água</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -91,7 +92,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Chǒu — Boi, Yin Terra, Troncos Ocultos: Jǐ, Guǐ, Xīn">
       <span class="branch-hanzi">丑</span>
       <span class="branch-animal" aria-hidden="true">🐂</span>
-      <span class="branch-pinyin">Chǒu</span>
+      <span class="branch-pinyin">Chǒu</span> <span class="branch-name">✦ Boi</span>
       <span class="branch-elem" style="color:var(--em)">Yin Terra</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -104,7 +105,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Yín — Tigre, Yang Madeira, Troncos Ocultos: Jiǎ, Bǐng, Wù">
       <span class="branch-hanzi">寅</span>
       <span class="branch-animal" aria-hidden="true">🐯</span>
-      <span class="branch-pinyin">Yín</span>
+      <span class="branch-pinyin">Yín</span> <span class="branch-name">✦ Tigre</span>
       <span class="branch-elem" style="color:var(--om)">Yang Madeira</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -117,7 +118,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Mǎo — Coelho, Yin Madeira, Tronco Oculto: Yǐ">
       <span class="branch-hanzi">卯</span>
       <span class="branch-animal" aria-hidden="true">🐇</span>
-      <span class="branch-pinyin">Mǎo</span>
+      <span class="branch-pinyin">Mǎo</span> <span class="branch-name">✦ Coelho</span>
       <span class="branch-elem" style="color:var(--om)">Yin Madeira</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -128,7 +129,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Chén — Dragão, Yang Terra, Troncos Ocultos: Wù, Yǐ, Guǐ">
       <span class="branch-hanzi">辰</span>
       <span class="branch-animal" aria-hidden="true">🐉</span>
-      <span class="branch-pinyin">Chén</span>
+      <span class="branch-pinyin">Chén</span> <span class="branch-name">✦ Dragão</span>
       <span class="branch-elem" style="color:var(--em)">Yang Terra</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -141,7 +142,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Sì — Serpente, Yang Fogo, Troncos Ocultos: Bǐng, Wù, Gēng">
       <span class="branch-hanzi">巳</span>
       <span class="branch-animal" aria-hidden="true">🐍</span>
-      <span class="branch-pinyin">Sì</span>
+      <span class="branch-pinyin">Sì</span> <span class="branch-name">✦ Serpente</span>
       <span class="branch-elem" style="color:var(--fm)">Yang Fogo</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -154,7 +155,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Wǔ — Cavalo, Yang Fogo, Troncos Ocultos: Dīng, Jǐ">
       <span class="branch-hanzi">午</span>
       <span class="branch-animal" aria-hidden="true">🐴</span>
-      <span class="branch-pinyin">Wǔ</span>
+      <span class="branch-pinyin">Wǔ</span> <span class="branch-name">✦ Cavalo</span>
       <span class="branch-elem" style="color:var(--fm)">Yang Fogo</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -166,7 +167,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Wèi — Cabra, Yin Terra, Troncos Ocultos: Jǐ, Dīng, Yǐ">
       <span class="branch-hanzi">未</span>
       <span class="branch-animal" aria-hidden="true">🐑</span>
-      <span class="branch-pinyin">Wèi</span>
+      <span class="branch-pinyin">Wèi</span> <span class="branch-name">✦ Cabra</span>
       <span class="branch-elem" style="color:var(--em)">Yin Terra</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -179,7 +180,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Shēn — Macaco, Yang Metal, Troncos Ocultos: Gēng, Rén, Wù">
       <span class="branch-hanzi">申</span>
       <span class="branch-animal" aria-hidden="true">🐒</span>
-      <span class="branch-pinyin">Shēn</span>
+      <span class="branch-pinyin">Shēn</span> <span class="branch-name">✦ Macaco</span>
       <span class="branch-elem" style="color:var(--mm)">Yang Metal</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -192,7 +193,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Yǒu — Galo, Yin Metal, Tronco Oculto: Xīn">
       <span class="branch-hanzi">酉</span>
       <span class="branch-animal" aria-hidden="true">🐓</span>
-      <span class="branch-pinyin">Yǒu</span>
+      <span class="branch-pinyin">Yǒu</span> <span class="branch-name">✦ Galo</span>
       <span class="branch-elem" style="color:var(--mm)">Yin Metal</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -203,7 +204,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Xū — Cão, Yang Terra, Troncos Ocultos: Wù, Xīn, Dīng">
       <span class="branch-hanzi">戌</span>
       <span class="branch-animal" aria-hidden="true">🐕</span>
-      <span class="branch-pinyin">Xū</span>
+      <span class="branch-pinyin">Xū</span> <span class="branch-name">✦ Cão</span>
       <span class="branch-elem" style="color:var(--em)">Yang Terra</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
@@ -216,7 +217,7 @@
     <div class="branch-card" role="listitem" tabindex="0" aria-label="Hài — Porco, Água Yin, Troncos Ocultos: Rén, Jiǎ">
       <span class="branch-hanzi">亥</span>
       <span class="branch-animal" aria-hidden="true">🐖</span>
-      <span class="branch-pinyin">Hài</span>
+      <span class="branch-pinyin">Hài</span> <span class="branch-name">✦ Porco</span>
       <span class="branch-elem" style="color:var(--wm)">Yin Água</span>
       <div class="branch-hidden" aria-label="Troncos ocultos">
         <span class="hidden-label">Troncos Ocultos</span>
