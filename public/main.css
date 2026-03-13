@@ -1247,7 +1247,7 @@ details summary::-webkit-details-marker { display: none; }
    ═══════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 600px) {
-  .trail-grid  { grid-template-columns: 1fr 1fr; }
+  .trail-grid  { grid-template-columns: 1fr; }
   .bazi-map    { grid-template-columns: repeat(4, 1fr); gap: 4px; }
   .bazi-pillar__stem, .bazi-pillar__branch { font-size: 1.4rem; }
   .nav         { padding: 0 var(--s2); }
