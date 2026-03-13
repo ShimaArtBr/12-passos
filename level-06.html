@@ -13,15 +13,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/public/main.css">
 <style>
-/* Grid 4x4 + Modal expandível */
-.trunk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s2);margin:var(--s5) 0}
-.trunk-card{cursor:pointer;height:120px;border-radius:var(--rl);border:1px solid var(--gb);background:var(--sc);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--s2);text-align:center;transition:all .2s;user-select:none}
+/* Grid 5x2 — Yang em cima, Yin embaixo, ordem: Água Madeira Fogo Terra Metal */
+.trunk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s2);margin:var(--s5) 0}
+.trunk-card{cursor:pointer;height:120px;border-radius:var(--rl);border:1px solid var(--gb);background:var(--sc);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--s2);text-align:center;transition:all .2s;user-select:none;position:relative}
 .trunk-card:hover{border-color:var(--gold);box-shadow:0 4px 12px rgba(192,154,74,.15)}
 .trunk-card:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(192,154,74,.2)}
 .trunk-card::before{content:attr(data-pol);font-family:var(--fm2);font-size:.45rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;position:absolute;top:6px;right:6px;padding:1px 5px;border-radius:3px}
 .trunk-card[data-pol="Yang"]::before{background:color-mix(in srgb,var(--fd) 15%,transparent);color:var(--fd)}
 .trunk-card[data-pol="Yin"]::before{background:color-mix(in srgb,var(--wd) 15%,transparent);color:var(--wd)}
-/* tipografia */
+@media(max-width:768px){.trunk-grid{grid-template-columns:repeat(3,1fr)}.trunk-card{height:100px}}
 .trunk-hanzi{font-family:var(--fc);font-size:2rem;color:var(--ip);font-style:normal;line-height:1;margin-bottom:4px}
 .trunk-pinyin{font-family:var(--ff);font-size:.75rem;font-style:italic;color:var(--gold);display:block}
 .trunk-elem-badge{font-family:var(--fd2);font-size:.5rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:4px;display:block}
@@ -84,55 +84,58 @@
 
   <div class="trunk-grid" role="list" aria-label="Os dez troncos celestiais — clique para expandir">
 
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" data-id="trunk-0" onclick="openTrunkModal(0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(0)}" aria-label="甲 Jiǎ — Yang Madeira, clique para expandir">
-      <span class="trunk-hanzi">甲</span>
-      <span class="trunk-pinyin">Jiǎ</span>
-      <span class="trunk-elem-badge" style="color:var(--om)">Yang Madeira</span>
-    </div>
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" data-id="trunk-1" onclick="openTrunkModal(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(1)}" aria-label="乙 Yǐ — Yin Madeira, clique para expandir">
-      <span class="trunk-hanzi">乙</span>
-      <span class="trunk-pinyin">Yǐ</span>
-      <span class="trunk-elem-badge" style="color:var(--om)">Yin Madeira</span>
-    </div>
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" data-id="trunk-2" onclick="openTrunkModal(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(2)}" aria-label="丙 Bǐng — Yang Fogo, clique para expandir">
-      <span class="trunk-hanzi">丙</span>
-      <span class="trunk-pinyin">Bǐng</span>
-      <span class="trunk-elem-badge" style="color:var(--fm)">Yang Fogo</span>
-    </div>
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" data-id="trunk-3" onclick="openTrunkModal(3)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(3)}" aria-label="丁 Dīng — Yin Fogo, clique para expandir">
-      <span class="trunk-hanzi">丁</span>
-      <span class="trunk-pinyin">Dīng</span>
-      <span class="trunk-elem-badge" style="color:var(--fm)">Yin Fogo</span>
-    </div>
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" data-id="trunk-4" onclick="openTrunkModal(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(4)}" aria-label="戊 Wù — Yang Terra, clique para expandir">
-      <span class="trunk-hanzi">戊</span>
-      <span class="trunk-pinyin">Wù</span>
-      <span class="trunk-elem-badge" style="color:var(--em)">Yang Terra</span>
-    </div>
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" data-id="trunk-5" onclick="openTrunkModal(5)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(5)}" aria-label="己 Jǐ — Yin Terra, clique para expandir">
-      <span class="trunk-hanzi">己</span>
-      <span class="trunk-pinyin">Jǐ</span>
-      <span class="trunk-elem-badge" style="color:var(--em)">Yin Terra</span>
-    </div>
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" data-id="trunk-6" onclick="openTrunkModal(6)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(6)}" aria-label="庚 Gēng — Yang Metal, clique para expandir">
-      <span class="trunk-hanzi">庚</span>
-      <span class="trunk-pinyin">Gēng</span>
-      <span class="trunk-elem-badge" style="color:var(--mm)">Yang Metal</span>
-    </div>
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" data-id="trunk-7" onclick="openTrunkModal(7)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(7)}" aria-label="辛 Xīn — Yin Metal, clique para expandir">
-      <span class="trunk-hanzi">辛</span>
-      <span class="trunk-pinyin">Xīn</span>
-      <span class="trunk-elem-badge" style="color:var(--mm)">Yin Metal</span>
-    </div>
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" data-id="trunk-8" onclick="openTrunkModal(8)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(8)}" aria-label="壬 Rén — Yang Água, clique para expandir">
+    <!-- Linha Yang: Água · Madeira · Fogo · Terra · Metal -->
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" onclick="openTrunkModal(0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(0)}" aria-label="壬 Rén — Yang Água, clique para expandir">
       <span class="trunk-hanzi">壬</span>
       <span class="trunk-pinyin">Rén</span>
       <span class="trunk-elem-badge" style="color:var(--wm)">Yang Água</span>
     </div>
-    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" data-id="trunk-9" onclick="openTrunkModal(9)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(9)}" aria-label="癸 Guǐ — Yin Água, clique para expandir">
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" onclick="openTrunkModal(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(1)}" aria-label="甲 Jiǎ — Yang Madeira, clique para expandir">
+      <span class="trunk-hanzi">甲</span>
+      <span class="trunk-pinyin">Jiǎ</span>
+      <span class="trunk-elem-badge" style="color:var(--om)">Yang Madeira</span>
+    </div>
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" onclick="openTrunkModal(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(2)}" aria-label="丙 Bǐng — Yang Fogo, clique para expandir">
+      <span class="trunk-hanzi">丙</span>
+      <span class="trunk-pinyin">Bǐng</span>
+      <span class="trunk-elem-badge" style="color:var(--fm)">Yang Fogo</span>
+    </div>
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" onclick="openTrunkModal(3)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(3)}" aria-label="戊 Wù — Yang Terra, clique para expandir">
+      <span class="trunk-hanzi">戊</span>
+      <span class="trunk-pinyin">Wù</span>
+      <span class="trunk-elem-badge" style="color:var(--em)">Yang Terra</span>
+    </div>
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yang" onclick="openTrunkModal(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(4)}" aria-label="庚 Gēng — Yang Metal, clique para expandir">
+      <span class="trunk-hanzi">庚</span>
+      <span class="trunk-pinyin">Gēng</span>
+      <span class="trunk-elem-badge" style="color:var(--mm)">Yang Metal</span>
+    </div>
+
+    <!-- Linha Yin: Água · Madeira · Fogo · Terra · Metal -->
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" onclick="openTrunkModal(5)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(5)}" aria-label="癸 Guǐ — Yin Água, clique para expandir">
       <span class="trunk-hanzi">癸</span>
       <span class="trunk-pinyin">Guǐ</span>
       <span class="trunk-elem-badge" style="color:var(--wm)">Yin Água</span>
+    </div>
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" onclick="openTrunkModal(6)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(6)}" aria-label="乙 Yǐ — Yin Madeira, clique para expandir">
+      <span class="trunk-hanzi">乙</span>
+      <span class="trunk-pinyin">Yǐ</span>
+      <span class="trunk-elem-badge" style="color:var(--om)">Yin Madeira</span>
+    </div>
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" onclick="openTrunkModal(7)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(7)}" aria-label="丁 Dīng — Yin Fogo, clique para expandir">
+      <span class="trunk-hanzi">丁</span>
+      <span class="trunk-pinyin">Dīng</span>
+      <span class="trunk-elem-badge" style="color:var(--fm)">Yin Fogo</span>
+    </div>
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" onclick="openTrunkModal(8)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(8)}" aria-label="己 Jǐ — Yin Terra, clique para expandir">
+      <span class="trunk-hanzi">己</span>
+      <span class="trunk-pinyin">Jǐ</span>
+      <span class="trunk-elem-badge" style="color:var(--em)">Yin Terra</span>
+    </div>
+    <div class="trunk-card" role="button" tabindex="0" data-pol="Yin" onclick="openTrunkModal(9)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openTrunkModal(9)}" aria-label="辛 Xīn — Yin Metal, clique para expandir">
+      <span class="trunk-hanzi">辛</span>
+      <span class="trunk-pinyin">Xīn</span>
+      <span class="trunk-elem-badge" style="color:var(--mm)">Yin Metal</span>
     </div>
 
   </div>
@@ -227,18 +230,18 @@
   import { initNav } from '/public/components/nav.js';
   initNav({ current: 6, total: 12 });
 
-  // Dados dos 10 troncos
+  // Dados dos 10 troncos — ordem: Yang(Água Madeira Fogo Terra Metal) + Yin(Água Madeira Fogo Terra Metal)
   const TRUNKS = [
-    { hanzi: '甲', pinyin: 'Jiǎ', pol: 'Yang', elem: 'Madeira', title: 'A Grande Árvore', desc: 'Impulso direto, liderança natural, pioneiro. O empreendedor que abre caminho na mata virgem.' },
-    { hanzi: '乙', pinyin: 'Yǐ', pol: 'Yin', elem: 'Madeira', title: 'A Trepadeira', desc: 'Flexibilidade, adaptação, persistência criativa. O jeitinho inteligente — a solução que contorna o intransponível.' },
-    { hanzi: '丙', pinyin: 'Bǐng', pol: 'Yang', elem: 'Fogo', title: 'O Sol', desc: 'Irradiação total, carisma, generosidade. O animador que faz todo mundo se sentir bem-vindo.' },
-    { hanzi: '丁', pinyin: 'Dīng', pol: 'Yin', elem: 'Fogo', title: 'A Chama da Vela', desc: 'Iluminação íntima, intuição, perspicácia. A avó que deixa a luz acesa esperando os netos.' },
-    { hanzi: '戊', pinyin: 'Wù', pol: 'Yang', elem: 'Terra', title: 'A Grande Montanha', desc: 'Estabilidade inabalável, confiança, proteção. O guardião que mantém a fortaleza.' },
-    { hanzi: '己', pinyin: 'Jǐ', pol: 'Yin', elem: 'Terra', title: 'O Solo Fértil', desc: 'Nutrição profunda, cultivo, paciência. A mãe-terra que alimenta silenciosamente.' },
-    { hanzi: '庚', pinyin: 'Gēng', pol: 'Yang', elem: 'Metal', title: 'A Espada', desc: 'Corte limpo, precisão, justiça. O juiz que vê a verdade sem rodeios.' },
-    { hanzi: '辛', pinyin: 'Xīn', pol: 'Yin', elem: 'Metal', title: 'A Joia Polida', desc: 'Refinamento perseverante, beleza interior. O artesão que transforma bruto em precioso.' },
-    { hanzi: '壬', pinyin: 'Rén', pol: 'Yang', elem: 'Água', title: 'O Grande Rio', desc: 'Fluxo imparável, poder, abundância. O viajante que carrega recursos a todos.' },
-    { hanzi: '癸', pinyin: 'Guǐ', pol: 'Yin', elem: 'Água', title: 'A Chuva Morna', desc: 'Germinação silenciosa, potencial oculto. O segredo que precisa apenas de tempo.' },
+    { hanzi: '壬', pinyin: 'Rén', pol: 'Yang', elem: 'Água',    title: 'O Grande Rio',      desc: 'Fluxo imparável, poder, abundância. O viajante que carrega recursos a todos.' },
+    { hanzi: '甲', pinyin: 'Jiǎ', pol: 'Yang', elem: 'Madeira', title: 'A Grande Árvore',   desc: 'Impulso direto, liderança natural, pioneiro. O empreendedor que abre caminho na mata virgem.' },
+    { hanzi: '丙', pinyin: 'Bǐng', pol: 'Yang', elem: 'Fogo',   title: 'O Sol',             desc: 'Irradiação total, carisma, generosidade. O animador que faz todo mundo se sentir bem-vindo.' },
+    { hanzi: '戊', pinyin: 'Wù',  pol: 'Yang', elem: 'Terra',   title: 'A Grande Montanha', desc: 'Estabilidade inabalável, confiança, proteção. O guardião que mantém a fortaleza.' },
+    { hanzi: '庚', pinyin: 'Gēng', pol: 'Yang', elem: 'Metal',  title: 'A Espada',          desc: 'Corte limpo, precisão, justiça. O juiz que vê a verdade sem rodeios.' },
+    { hanzi: '癸', pinyin: 'Guǐ', pol: 'Yin',  elem: 'Água',    title: 'A Chuva Morna',     desc: 'Germinação silenciosa, potencial oculto. O segredo que precisa apenas de tempo.' },
+    { hanzi: '乙', pinyin: 'Yǐ',  pol: 'Yin',  elem: 'Madeira', title: 'A Trepadeira',      desc: 'Flexibilidade, adaptação, persistência criativa. O jeitinho inteligente — a solução que contorna o intransponível.' },
+    { hanzi: '丁', pinyin: 'Dīng', pol: 'Yin', elem: 'Fogo',    title: 'A Chama da Vela',   desc: 'Iluminação íntima, intuição, perspicácia. A avó que deixa a luz acesa esperando os netos.' },
+    { hanzi: '己', pinyin: 'Jǐ',  pol: 'Yin',  elem: 'Terra',   title: 'O Solo Fértil',     desc: 'Nutrição profunda, cultivo, paciência. A mãe-terra que alimenta silenciosamente.' },
+    { hanzi: '辛', pinyin: 'Xīn', pol: 'Yin',  elem: 'Metal',   title: 'A Joia Polida',     desc: 'Refinamento perseverante, beleza interior. O artesão que transforma bruto em precioso.' },
   ];
 
   const modal = document.getElementById('trunk-modal');
