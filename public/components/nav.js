@@ -1,5 +1,4 @@
 // nav.js — BAZILAR Didático
-// Injeta a nav com indicador de nível e toggle de tema
 
 export function initNav({ current = 0, total = 12 } = {}) {
   // ── Toggle de tema ──────────────────────────────────
@@ -18,34 +17,57 @@ export function initNav({ current = 0, total = 12 } = {}) {
   const fill = document.querySelector('.scroll-bar-fill');
   if (fill) {
     const onScroll = () => {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+      const t = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = t > 0 ? (window.scrollY / t) * 100 : 0;
       fill.style.width = pct + '%';
     };
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // ── Indicador de nível (injetado via data-attr na nav) ──
+  // ── Indicador de nível ──────────────────────────────
   const badge = document.querySelector('.nav-progress');
   if (badge && current > 0) {
     badge.innerHTML = `Nível <span>${current}</span> / ${total}`;
   }
 
-  // ── Atualiza ícone do toggle conforme tema salvo ────
+  // ── Ícone de tema ───────────────────────────────────
   const icon = document.getElementById('theme-icon');
   if (icon) icon.textContent = saved === 'dark' ? '☀️' : '🌙';
 
-  // ── Animação de entrada dos glifos (::before dos cards) ──
-  const glyphTargets = document.querySelectorAll('[data-glyph]');
-  if (glyphTargets.length && 'IntersectionObserver' in window) {
+  // ── Ocultar cards locked ────────────────────────────
+  document.querySelectorAll('.trail-card.locked').forEach(el => {
+    el.style.display = 'none';
+  });
+
+  // ── Animação escalonada por grupo ───────────────────
+  if (!('IntersectionObserver' in window)) return;
+
+  // Agrupa cards por grid pai para calcular delay individual dentro do grupo
+  const grids = document.querySelectorAll('.trail-grid');
+  grids.forEach(grid => {
+    const cards = Array.from(grid.querySelectorAll('[data-glyph]:not(.locked)'));
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('glyph-visible');
-          obs.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        const idx = cards.indexOf(entry.target);
+        entry.target.style.transitionDelay = `${idx * 80}ms`;
+        entry.target.classList.add('glyph-visible');
+        obs.unobserve(entry.target);
       });
-    }, { threshold: 0.15 });
-    glyphTargets.forEach(el => obs.observe(el));
-  }
+    }, { threshold: 0.1 });
+    cards.forEach(el => obs.observe(el));
+  });
+
+  // Páginas de nível — hero-glyph e outros [data-glyph] fora de grids
+  document.querySelectorAll('[data-glyph]:not(.trail-grid [data-glyph])').forEach((el, i) => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.transitionDelay = `${i * 60}ms`;
+        entry.target.classList.add('glyph-visible');
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.1 });
+    obs.observe(el);
+  });
 }
